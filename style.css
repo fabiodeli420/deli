@@ -1006,4 +1006,64 @@ ul { list-style: none; }
 .toast        { z-index: 2000; }
 .cursor       { z-index: 9999; }
 .cursor-follower { z-index: 9998; }
- 
+
+/* ── FONDO ANIMADO DK ── */
+.dk-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dk-letter {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: var(--size);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--col);
+  opacity: var(--op);
+  left: var(--x);
+  top: var(--y);
+  animation: dkFloat var(--dur) ease-in-out infinite var(--delay);
+  user-select: none;
+  filter: blur(0.3px);
+}
+
+@keyframes dkFloat {
+  0%   { transform: translateY(0px) rotate(var(--rot)) scale(1); opacity: var(--op); }
+  33%  { transform: translateY(-18px) rotate(calc(var(--rot) + 4deg)) scale(1.04); }
+  66%  { transform: translateY(10px) rotate(calc(var(--rot) - 3deg)) scale(0.97); }
+  100% { transform: translateY(0px) rotate(var(--rot)) scale(1); opacity: var(--op); }
+}
+
+/* ── INSTAGRAM ── */
+.ig-card { 
+  border-color: rgba(225,48,108,0.25) !important; 
+  background: rgba(225,48,108,0.04) !important; 
+}
+.ig-card i { 
+  color: #e1306c !important; 
+}
+.ig-card:hover { 
+  border-color: #e1306c !important; 
+  box-shadow: 0 14px 40px rgba(225,48,108,0.15) !important; 
+}
+.ig-card .contact-action { color: #e1306c !important; }
+
+.ig-btn:hover { 
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+  border-color: transparent !important; 
+  color: white !important; 
+}
+
+/* Fix z-index para que todo quede sobre el fondo */
+body > *:not(.dk-bg) { position: relative; z-index: 1; }
+.navbar   { z-index: 1000 !important; }
+.wa-float { z-index: 900  !important; }
+.cart-overlay { z-index: 1100 !important; }
+.cart-drawer  { z-index: 1200 !important; }
+.toast        { z-index: 2000 !important; }
+.cursor       { z-index: 9999 !important; }
+.cursor-follower { z-index: 9998 !important; } 
