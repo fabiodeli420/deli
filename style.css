@@ -1066,4 +1066,30 @@ body > *:not(.dk-bg) { position: relative; z-index: 1; }
 .cart-drawer  { z-index: 1200 !important; }
 .toast        { z-index: 2000 !important; }
 .cursor       { z-index: 9999 !important; }
-.cursor-follower { z-index: 9998 !important; } 
+.cursor-follower { z-index: 9998 !important; }
+
+/* ── FONDO DK PURO CSS ── */
+.dk-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dk-l {
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--col);
+  opacity: 0.07;
+  transform: rotate(var(--rot));
+  animation: dkPulse var(--dur) ease-in-out infinite var(--del);
+  user-select: none;
+  line-height: 1;
+}
+
+@keyframes dkPulse {
+  0%,100% { transform: rotate(var(--rot)) translateY(0px); opacity: 0.07; }
+  50%      { transform: rotate(var(--rot)) translateY(-14px); opacity: 0.13; }
+} 
