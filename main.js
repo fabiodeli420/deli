@@ -1,235 +1,346 @@
-// ── DELIKUSH · script.js ──────────────────────────────────────────
+// =========================================
+//   DELIKUSH – main.js  (versión definitiva)
+//   Carrito · Formulario · Cursor · Animaciones
+// =========================================
 
-const WHATSAPP_TEL = "541156584277";
+const WA = '541156584277';
 
-// ── Catálogo de productos ──────────────────────────────────────────
-const products = [
-  {
-    id: 1,
-    name: "BOXY FIT TEE",
-    category: "Remeras",
-    desc: "Algodón 100% Premium. Off-White. Cuello ancho oversize.",
-    price: 22500,
-    emoji: "👕",
-    featured: false
-  },
-  {
-    id: 2,
-    name: "HEAVY HOODIE",
-    category: "Abrigos",
-    desc: "420 GSM. Frisa invisible. Capucha reforzada. Negro.",
-    price: 45000,
-    emoji: "🧥",
-    featured: false
-  },
-  {
-    id: 3,
-    name: "BAGGY CARGO",
-    category: "Pantalones",
-    desc: "Corte ultra relajado. 6 bolsillos funcionales. Canvas.",
-    price: 38900,
-    emoji: "👖",
-    featured: false
-  },
-  {
-    id: 4,
-    name: "OVERSHORT",
-    category: "Shorts",
-    desc: "Frisa liviana. Ideal daily wear. Elástico interior.",
-    price: 18500,
-    emoji: "🩳",
-    featured: false
-  },
-  {
-    id: 5,
-    name: "TRUCKER CAP",
-    category: "Accesorios",
-    desc: "Parche DK bordado. Visera curva. Malla trasera.",
-    price: 12000,
-    emoji: "🧢",
-    featured: false
-  },
-  {
-    id: 6,
-    name: "COMBO DK",
-    category: "Combos",
-    desc: "Hoodie + Baggy Cargo a elección. Ahorrás $8.900 vs precio unitario.",
-    price: 75000,
-    emoji: "🎁",
-    featured: true
-  }
+// ── PRODUCTOS ────────────────────────────────────────────────────
+const PRODUCTOS = [
+  { id:1, nombre:'Remera Oversize',  emoji:'👕', desc:'Fit amplio, tela premium, varios colores. El básico que no puede faltar.', precio:22500, badge:'BESTSELLER', gradiente:'linear-gradient(135deg,#ff6b35,#f7931e)' },
+  { id:2, nombre:'Buzo Hoodie',      emoji:'🧥', desc:'Capucha, bolsillo canguro, 420GSM. Super cómodo para el día a día.',      precio:45000, badge:'NUEVO',     gradiente:'linear-gradient(135deg,#a855f7,#6366f1)', badgeNew:true },
+  { id:3, nombre:'Pantalón Baggy',   emoji:'👖', desc:'Corte relajado, tela liviana y resistente. El combo perfecto.',            precio:38900, badge:'',          gradiente:'linear-gradient(135deg,#10b981,#06b6d4)' },
+  { id:4, nombre:'Jogger Oversize',  emoji:'🩳', desc:'Elástico en puños y cintura. Ideal para un look streetwear completo.',     precio:28000, badge:'FIRE',      gradiente:'linear-gradient(135deg,#f43f5e,#fb923c)' },
+  { id:5, nombre:'Set Completo',     emoji:'🎁', desc:'Buzo + Pantalón a juego. El outfit completo que todos quieren.',           precio:75000, badge:'OFERTA',    gradiente:'linear-gradient(135deg,#eab308,#f97316)' },
+  { id:6, nombre:'Trucker Cap DK',   emoji:'🧢', desc:'Parche DK bordado. Visera curva. El accesorio que corona todo look.',      precio:12000, badge:'NUEVO',     gradiente:'linear-gradient(135deg,#3b82f6,#8b5cf6)', badgeNew:true },
 ];
 
-// ── Estado del carrito ─────────────────────────────────────────────
-let cart = [];
+// ── CARRITO ───────────────────────────────────────────────────────
+let carrito = [];
 
-// ── Helpers de formato ─────────────────────────────────────────────
-function formatPrice(n) {
-  return "$" + n.toLocaleString("es-AR");
+function formatPrecio(n) {
+  return '$' + n.toLocaleString('es-AR');
 }
 
-// ── Render del catálogo ────────────────────────────────────────────
-function renderCatalog() {
-  const grid = document.getElementById("product-grid");
-  grid.innerHTML = "";
-
-  products.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "product-card" + (p.featured ? " featured" : "");
-    card.id = `card-${p.id}`;
-
-    card.innerHTML = `
-      <div class="card-emoji">${p.emoji}</div>
-      <div class="card-body">
-        <p class="card-category">${p.category}</p>
-        <h3 class="card-name">${p.name}</h3>
-        <p class="card-desc">${p.desc}</p>
-        <div class="card-footer">
-          <div>
-            <span class="card-price-label">Precio</span>
-            <span class="card-price">${formatPrice(p.price)}</span>
-          </div>
-          <button class="add-btn" id="add-${p.id}" onclick="addToCart(${p.id})" title="Agregar al carrito">+</button>
+function renderProductos() {
+  const grid = document.getElementById('productsGrid');
+  if (!grid) return;
+  grid.innerHTML = PRODUCTOS.map(p => `
+    <div class="product-card reveal">
+      <div class="product-img" style="background:${p.gradiente}">
+        <span class="product-icon">${p.emoji}</span>
+        ${p.badge ? `<div class="product-badge${p.badgeNew?' badge-new':''}">${p.badge}</div>` : ''}
+      </div>
+      <div class="product-info">
+        <h3>${p.nombre}</h3>
+        <p>${p.desc}</p>
+        <span class="product-price">${formatPrecio(p.precio)}</span>
+        <div class="product-sizes">
+          <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span>
         </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-// ── Agregar al carrito ─────────────────────────────────────────────
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  if (!product) return;
-
-  const existing = cart.find(i => i.id === productId);
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({ ...product, qty: 1 });
-  }
-
-  // Feedback visual en el botón
-  const btn = document.getElementById(`add-${productId}`);
-  if (btn) {
-    btn.textContent = "✓";
-    btn.classList.add("added");
-    setTimeout(() => {
-      btn.textContent = "+";
-      btn.classList.remove("added");
-    }, 1200);
-  }
-
-  updateCartUI();
-  renderCartItems();
-}
-
-// ── Cambiar cantidad ───────────────────────────────────────────────
-function changeQty(productId, delta) {
-  const idx = cart.findIndex(i => i.id === productId);
-  if (idx === -1) return;
-
-  cart[idx].qty += delta;
-  if (cart[idx].qty <= 0) {
-    cart.splice(idx, 1);
-  }
-
-  updateCartUI();
-  renderCartItems();
-}
-
-// ── Actualizar badge y total ───────────────────────────────────────
-function updateCartUI() {
-  const total = cart.reduce((sum, i) => sum + i.qty, 0);
-  const count = document.getElementById("cart-count");
-  const totalEl = document.getElementById("cart-total");
-  const checkoutBtn = document.getElementById("checkout-btn");
-
-  count.textContent = total;
-  if (total > 0) {
-    count.classList.add("visible");
-  } else {
-    count.classList.remove("visible");
-  }
-
-  const money = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-  if (totalEl) totalEl.textContent = formatPrice(money);
-  if (checkoutBtn) checkoutBtn.disabled = total === 0;
-}
-
-// ── Render de items en el drawer ───────────────────────────────────
-function renderCartItems() {
-  const container = document.getElementById("cart-items");
-  if (!container) return;
-
-  if (cart.length === 0) {
-    container.innerHTML = `
-      <div class="drawer-empty">
-        <div class="drawer-empty-icon">🛒</div>
-        <p>Tu carrito está vacío</p>
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <span class="item-emoji">${item.emoji}</span>
-      <div class="item-info">
-        <p class="item-name">${item.name}</p>
-        <p class="item-price">${formatPrice(item.price)} c/u</p>
-      </div>
-      <div class="item-qty">
-        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
-        <span class="qty-num">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${item.id}, +1)">+</button>
+        <button class="btn-card" onclick="agregarAlCarrito(${p.id})">
+          <i class="fas fa-shopping-bag"></i> Agregar al carrito
+        </button>
       </div>
     </div>
-  `).join("");
+  `).join('');
+  observeReveal();
 }
 
-// ── Abrir / cerrar drawer ──────────────────────────────────────────
+function agregarAlCarrito(id) {
+  const prod = PRODUCTOS.find(p => p.id === id);
+  if (!prod) return;
+  const ex = carrito.find(i => i.id === id);
+  if (ex) { ex.qty++; } else { carrito.push({...prod, qty:1}); }
+  actualizarCartUI();
+  renderCartItems();
+  showToast(`✅ ${prod.emoji} ${prod.nombre} agregado`, 'success');
+}
+
+function cambiarQty(id, delta) {
+  const idx = carrito.findIndex(i => i.id === id);
+  if (idx === -1) return;
+  carrito[idx].qty += delta;
+  if (carrito[idx].qty <= 0) carrito.splice(idx, 1);
+  actualizarCartUI();
+  renderCartItems();
+}
+
+function actualizarCartUI() {
+  const total = carrito.reduce((s, i) => s + i.qty, 0);
+  const countEl = document.getElementById('cartCount');
+  if (countEl) {
+    countEl.textContent = total;
+    total > 0 ? countEl.classList.add('show') : countEl.classList.remove('show');
+  }
+  const totalEl = document.getElementById('drawerTotal');
+  if (totalEl) {
+    const money = carrito.reduce((s, i) => s + i.precio * i.qty, 0);
+    totalEl.textContent = formatPrecio(money);
+  }
+  const btn = document.getElementById('checkoutBtn');
+  if (btn) btn.disabled = total === 0;
+}
+
+function renderCartItems() {
+  const cont = document.getElementById('drawerItems');
+  if (!cont) return;
+  if (carrito.length === 0) {
+    cont.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><p>Tu carrito está vacío</p></div>`;
+    return;
+  }
+  cont.innerHTML = carrito.map(item => `
+    <div class="cart-item">
+      <span class="ci-emoji">${item.emoji}</span>
+      <div class="ci-info">
+        <p class="ci-name">${item.nombre}</p>
+        <p class="ci-price">${formatPrecio(item.precio)} c/u</p>
+      </div>
+      <div class="ci-qty">
+        <button class="qty-btn" onclick="cambiarQty(${item.id},-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="cambiarQty(${item.id},+1)">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
 function openCart() {
-  document.getElementById("cart-overlay").classList.add("open");
-  document.getElementById("cart-drawer").classList.add("open");
-  document.body.style.overflow = "hidden";
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
   renderCartItems();
 }
 
 function closeCart() {
-  document.getElementById("cart-overlay").classList.remove("open");
-  document.getElementById("cart-drawer").classList.remove("open");
-  document.body.style.overflow = "";
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-// ── Checkout vía WhatsApp ──────────────────────────────────────────
 function checkout() {
-  if (cart.length === 0) return;
-
-  const lines = cart.map(i =>
-    `• ${i.qty}x ${i.name} — ${formatPrice(i.price * i.qty)}`
-  );
-  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-
-  const msg =
-    `¡Hola DELIKUSH! Quiero realizar el siguiente pedido:\n\n` +
-    lines.join("\n") +
-    `\n\n*TOTAL: ${formatPrice(total)}*\n\n¿Podemos coordinar el pago y envío?`;
-
-  window.open(`https://wa.me/${WHATSAPP_TEL}?text=${encodeURIComponent(msg)}`, "_blank");
+  if (carrito.length === 0) return;
+  const lineas = carrito.map(i => `• ${i.qty}x ${i.nombre} — ${formatPrecio(i.precio * i.qty)}`);
+  const total  = carrito.reduce((s,i) => s + i.precio * i.qty, 0);
+  const msg = `¡Hola DELIKUSH! 🔥 Quiero hacer el siguiente pedido:\n\n${lineas.join('\n')}\n\n*TOTAL: ${formatPrecio(total)}*\n\n¿Me podés confirmar disponibilidad y coordinar el envío?`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// ── WhatsApp directo (sin carrito) ────────────────────────────────
-function openWhatsApp() {
-  window.open(`https://wa.me/${WHATSAPP_TEL}`, "_blank");
+// ── FORMULARIO ────────────────────────────────────────────────────
+function enviarPedido(e) {
+  e.preventDefault();
+  const nombre  = document.getElementById('nombre').value.trim();
+  const prenda  = document.getElementById('prenda').value;
+  const talleEl = document.querySelector('input[name="talle"]:checked');
+  const color   = document.getElementById('color').value.trim();
+  const nota    = document.getElementById('nota').value.trim();
+
+  if (!talleEl) { showToast('⚠️ Elegí un talle', 'warning'); return; }
+
+  let msg = `Hola! 👋 Soy *${nombre}* y quiero hacer un pedido en *DELIKUSH* 🔥\n\n`;
+  msg += `🛍️ *Prenda:* ${prenda}\n`;
+  msg += `📐 *Talle:* ${talleEl.value}\n`;
+  if (color) msg += `🎨 *Color:* ${color}\n`;
+  if (nota)  msg += `💬 *Nota:* ${nota}\n`;
+  msg += `\n¡Gracias!`;
+
+  showToast('✅ Redirigiendo a WhatsApp...', 'success');
+  setTimeout(() => window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank'), 600);
+  setTimeout(() => document.getElementById('pedidoForm').reset(), 1000);
 }
 
-// ── Init ───────────────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", () => {
-  renderCatalog();
-  updateCartUI();
+// ── PEDIR PRODUCTO DIRECTO ────────────────────────────────────────
+function pedirProducto(nombre) {
+  const msg = `Hola! Quiero info sobre: *${nombre}* 🔥`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+}
 
-  // Cerrar con overlay
-  document.getElementById("cart-overlay")
-    .addEventListener("click", closeCart);
+// ── TOAST ─────────────────────────────────────────────────────────
+function showToast(texto, tipo = 'success') {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  const icon = tipo === 'success' ? 'fa-check-circle' : tipo === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle';
+  toast.innerHTML = `<i class="fas ${icon}"></i> <span>${texto}</span>`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ── NAVBAR SCROLL ─────────────────────────────────────────────────
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    updateActiveNav();
+  });
+}
+
+function updateActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('.nav-links a');
+  const scrollY  = window.scrollY + 90;
+  sections.forEach(sec => {
+    if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}
+
+// ── MOBILE MENU ───────────────────────────────────────────────────
+function initMobileMenu() {
+  const toggle   = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (!toggle) return;
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+}
+
+// ── SMOOTH SCROLL ─────────────────────────────────────────────────
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' });
+    });
+  });
+}
+
+// ── CURSOR CUSTOM ─────────────────────────────────────────────────
+function initCursor() {
+  const cur = document.getElementById('cursor');
+  const fol = document.getElementById('cursorFollower');
+  if (!cur || !fol) return;
+  let mx=0, my=0, fx=0, fy=0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    cur.style.left  = mx + 'px';
+    cur.style.top   = my + 'px';
+    fx += (mx - fx) * 0.14;
+    fy += (my - fy) * 0.14;
+    fol.style.left = fx + 'px';
+    fol.style.top  = fy + 'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+  document.querySelectorAll('a, button, .product-card, .contact-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cur.style.transform = 'translate(-50%,-50%) scale(2)';
+      fol.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cur.style.transform = 'translate(-50%,-50%) scale(1)';
+      fol.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
+  });
+}
+
+// ── REVEAL ON SCROLL ──────────────────────────────────────────────
+function observeReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+}
+
+// ── PARALLAX BLOBS HERO ───────────────────────────────────────────
+function initParallax() {
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    const blobs = document.querySelectorAll('.blob');
+    if (blobs[0]) blobs[0].style.transform = `translate(${sy*0.02}px,${-sy*0.04}px)`;
+    if (blobs[1]) blobs[1].style.transform = `translate(${-sy*0.02}px,${sy*0.03}px)`;
+  });
+}
+
+// ── TICKER DUPLICADO ──────────────────────────────────────────────
+function initTicker() {
+  const track = document.querySelector('.strip-track');
+  if (!track) return;
+  const clone = track.cloneNode(true);
+  track.parentElement.appendChild(clone);
+}
+
+// ── EASTER EGG (5 clicks en el logo) ────────────────────────────
+function initEasterEgg() {
+  const logo = document.getElementById('logoEgg');
+  if (!logo) return;
+  let clicks = 0;
+  logo.addEventListener('click', () => {
+    clicks++;
+    if (clicks === 5) {
+      clicks = 0;
+      showToast('🌿 KUSH MODE ACTIVATED 🔥', 'success');
+      document.body.style.transition = 'filter 0.5s';
+      document.body.style.filter = 'hue-rotate(180deg)';
+      setTimeout(() => { document.body.style.filter = 'hue-rotate(0deg)'; }, 1500);
+      setTimeout(() => { document.body.style.filter = ''; }, 2100);
+    }
+  });
+}
+
+// ── ANIMACIÓN DE NÚMEROS (counter) ───────────────────────────────
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-n[data-target]');
+  counters.forEach(el => {
+    const target = parseInt(el.dataset.target);
+    let cur = 0;
+    const step = target / 50;
+    const timer = setInterval(() => {
+      cur += step;
+      if (cur >= target) { cur = target; clearInterval(timer); }
+      el.textContent = Math.floor(cur) + (el.dataset.suffix || '');
+    }, 30);
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderProductos();
+  actualizarCartUI();
+  initNavbar();
+  initMobileMenu();
+  initSmoothScroll();
+  initCursor();
+  initParallax();
+  initTicker();
+  initEasterEgg();
+  observeReveal();
+
+  // Entradas hero con delay
+  const heroContent = document.querySelector('.hero-content');
+  const heroVisual  = document.querySelector('.hero-visual');
+  if (heroContent) heroContent.style.animationDelay = '0s';
+  if (heroVisual)  heroVisual.style.animationDelay  = '0.25s';
+
+  // Keyframes dinámicos extra
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeInLeft {
+      from { opacity:0; transform:translateX(-32px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity:0; transform:translateX(32px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+  `;
+  document.head.appendChild(style);
 });
