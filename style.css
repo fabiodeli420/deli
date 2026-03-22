@@ -1,104 +1,84 @@
-/* --- CONFIGURACIÓN GENERAL --- */
-:root {
-    --bg-black: #050505;
-    --dark-card: #0c0c0c;
-    --fire-orange: #ff6b35;
-    --kush-yellow: #f7c948;
-    --white: #ffffff;
-    --glass: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.08);
-}
-
+/* Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body { 
-    background-color: var(--bg-black); 
-    color: var(--white); 
-    font-family: 'Montserrat', sans-serif; 
-    overflow-x: hidden; 
-    line-height: 1.6;
+    background-color: #050505; 
+    color: white; 
+    font-family: 'Inter', sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: radial-gradient(circle at center, #111 0%, #050505 100%);
 }
 
-/* Fondo Dinámico con Movimiento */
-.background-glow {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
-    z-index: -1;
-}
-
-.background-glow::after {
-    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle at center, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
-    animation: moveGlow 15s linear infinite;
-}
-
-@keyframes moveGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* --- CONTENEDOR BENTO (PROFESIONAL) --- */
 .bento-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(180px, auto);
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 500px;
+    width: 100%;
 }
 
-/* --- ESTILO DE CAJAS (GLASSMORPISM) --- */
+/* MEJORA: Efecto Vidrio y Bordes */
 .bento-item {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    padding: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    backdrop-filter: blur(10px);
 }
 
-/* INTERACCIÓN AGRESIVA (Lo que pedías) */
+/* MEJORA: Movimiento 3D Visual */
 .bento-item:hover {
-    border-color: var(--fire-orange);
+    border-color: #ff6b35;
     background: rgba(255, 107, 53, 0.05);
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* --- ESTILOS DE CAJAS ESPECÍFICAS --- */
+.card-logo { grid-column: span 2; height: 160px; border-bottom: 2px solid #ff6b35; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; letter-spacing: 2px; }
+.logo span { color: #ff6b35; text-shadow: 0 0 10px rgba(255, 107, 53, 0.3); }
 
-/* Bloque Grande */
-.card-hero { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
-.logo { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; letter-spacing: 2px; }
-.logo span { color: var(--fire-orange); text-shadow: 0 0 15px rgba(255, 107, 53, 0.5); }
-.badge { background: var(--fire-orange); padding: 5px 10px; border-radius: 4px; font-weight: 900; font-size: 0.7rem; width: fit-content; margin-bottom: 10px; }
+.card-visual { 
+    grid-column: span 2; 
+    height: 220px; 
+    background: linear-gradient(135deg, #ff6b35, #a855f7); 
+    border: none;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+}
+.dk-symbol { font-family: 'Bebas Neue'; font-size: 8rem; opacity: 0.2; animation: bounce 4s infinite ease-in-out; }
 
-/* Bloque Visual */
-.card-visual { grid-column: span 2; grid-row: span 2; background: linear-gradient(135deg, #ff6b35, #a855f7); display: grid; place-items: center; border: none; }
-.dk-inner { font-family: 'Bebas Neue'; font-size: 10rem; opacity: 0.2; animation: float 4s ease-in-out infinite; }
-.tag-floating { position: absolute; bottom: 30px; left: 30px; background: rgba(0,0,0,0.8); padding: 5px 12px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; }
+.card-product { height: 210px; }
+.emoji { font-size: 4rem; margin-bottom: 10px; }
+.price { font-weight: 900; color: #ff6b35; font-size: 1.5rem; margin-top: 5px; }
 
-/* Productos */
-.card-product { grid-column: span 1; grid-row: span 2; text-align: center; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
-.product-icon { font-size: 6rem; padding: 20px; }
-.price { color: var(--kush-yellow); font-weight: 900; font-size: 1.6rem; margin-top: 10px; }
-h3 { font-family: 'Bebas Neue'; font-size: 1.5rem; color: white; margin: 10px 0; }
-.badge-new { position: absolute; top: 15px; right: 15px; background: white; color: black; padding: 4px 8px; border-radius: 4px; font-weight: 900; font-size: 0.6rem; }
+.card-wa { 
+    grid-column: span 2; 
+    height: 90px; 
+    background: #25d366; 
+    color: white; 
+    border: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+.card-wa h3 { font-weight: 900; letter-spacing: 1px; }
 
-/* WhatsApp */
-.card-whatsapp { grid-column: span 2; display: flex; align-items: center; gap: 20px; cursor: pointer; border-color: rgba(37, 211, 102, 0.2); }
-.card-whatsapp i.fab { font-size: 3.5rem; color: #25d366; }
-.card-whatsapp i.fas { font-size: 1rem; color: #bbb; margin-left: auto; }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.05); }
+}
 
-/* Info */
-.card-info { grid-column: span 2; display: flex; align-items: center; gap: 20px; }
-.card-info i { font-size: 2rem; color: var(--fire-orange); }
-
-/* ANIMACIONES */
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-/* RESPONSIVE PARA CELULAR (IMPORTANTE) */
-@media (max-width: 768px) {
-    .bento-container { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-    .card-hero, .card-visual, .card-product, .card-whatsapp, .card-info { grid-column: span 2; }
+/* Ajuste Celular */
+@media (max-width: 400px) {
+    .bento-container { grid-template-columns: 1fr; }
+    .card-logo, .card-visual, .card-product, .card-wa { grid-column: span 1; }
 }
