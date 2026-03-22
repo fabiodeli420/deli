@@ -3,38 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | 2026</title>
+    <title>DELIKUSH | Premium Streetwear</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- TODO EL CSS AQUÍ PARA QUE NO FALLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: #050505; 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+        }
+
+        .bento-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Efecto Vidrio Premium */
+        .bento-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Brillo de neón al pasar el mouse */
+        .bento-item:hover {
+            border-color: #ff6b35;
+            background: rgba(255, 107, 53, 0.08);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(255, 107, 53, 0.15);
+        }
+
+        .card-logo { grid-column: span 2; height: 160px; border-bottom: 3px solid #ff6b35; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; letter-spacing: 2px; }
+        .logo span { color: #ff6b35; text-shadow: 0 0 15px rgba(255, 107, 53, 0.5); }
+
+        .card-visual { 
+            grid-column: span 2; 
+            height: 220px; 
+            background: linear-gradient(135deg, #ff6b35, #a855f7); 
+            border: none;
+        }
+        .dk-symbol { font-family: 'Bebas Neue'; font-size: 9rem; opacity: 0.2; animation: float 4s infinite ease-in-out; }
+
+        .card-product { height: 210px; }
+        .emoji { font-size: 4.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+        .price { font-weight: 900; color: #ff6b35; font-size: 1.6rem; margin-top: 5px; }
+        h3 { font-family: 'Bebas Neue'; font-size: 1.6rem; letter-spacing: 1px; }
+
+        .card-wa { 
+            grid-column: span 2; 
+            height: 90px; 
+            background: #25d366; 
+            color: white; 
+            border: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        @media (max-width: 400px) {
+            .bento-container { grid-template-columns: 1fr; }
+            .card-logo, .card-visual, .card-product, .card-wa { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body>
+
     <div class="bento-container">
         <div class="bento-item card-logo">
             <h1 class="logo">DELI<span>KUSH</span></h1>
-            <p>VISTE GRANDE</p>
+            <p style="letter-spacing: 5px; font-weight: 400; opacity: 0.7;">VISTE GRANDE</p>
         </div>
 
         <div class="bento-item card-visual">
             <div class="dk-symbol">DK</div>
         </div>
 
-        <div class="bento-item card-product" onclick="pedir('Boxy Fit', '$22.500')">
+        <div class="bento-item card-product" onclick="pedir('Boxy Fit Tee', '$22.500')">
             <span class="emoji">👕</span>
             <h3>BOXY FIT</h3>
             <p class="price">$22.500</p>
         </div>
 
-        <div class="bento-item card-product" onclick="pedir('Hoodie', '$45.000')">
+        <div class="bento-item card-product" onclick="pedir('Heavy Hoodie', '$45.000')">
             <span class="emoji">🧥</span>
             <h3>HOODIE</h3>
             <p class="price">$45.000</p>
         </div>
 
-        <div class="bento-item card-wa" onclick="window.open('https://wa.me/541156584277')">
-            <h3>WHATSAPP 🔥</h3>
-            <p>PEDIR AHORA</p>
+        <div class="bento-item card-wa" onclick="pedirWhatsApp()">
+            <h3 style="font-size: 1.8rem;">PEDIR POR WHATSAPP 🔥</h3>
         </div>
     </div>
-    <script src="main.js"></script>
+
+    <script>
+        // --- TODO EL JS AQUÍ PARA QUE NO FALLE ---
+        function pedir(producto, precio) {
+            const tel = "541156584277";
+            const mensaje = encodeURIComponent(`¡Hola DELIKUSH! 🔥 Me interesa el producto: ${producto} (${precio})`);
+            window.open(`https://wa.me/${tel}?text=${mensaje}`, '_blank');
+        }
+
+        function pedirWhatsApp() {
+            window.open('https://wa.me/541156584277', '_blank');
+        }
+
+        // Efecto Tilt 3D
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (centerY - y) / 15;
+                const rotateY = (x - centerX) / 15;
+                item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        });
+    </script>
 </body>
 </html>
