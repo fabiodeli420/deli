@@ -322,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initTicker();
   initEasterEgg();
+  initParticles();
   observeReveal();
 
   // Entradas hero con delay
@@ -344,3 +345,89 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(style);
 });
+
+// ── PARTÍCULAS ────────────────────────────────────────────────────
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const COLORS = ['#ff6b35', '#a855f7', '#f7c948', '#6366f1', '#ff9d6f', '#c084fc'];
+  const COUNT  = 55;
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(initial = false) {
+      this.x    = Math.random() * W;
+      this.y    = initial ? Math.random() * H : H + 10;
+      this.r    = Math.random() * 2.2 + 0.6;
+      this.vx   = (Math.random() - 0.5) * 0.4;
+      this.vy   = -(Math.random() * 0.5 + 0.2);
+      this.alpha= Math.random() * 0.6 + 0.15;
+      this.color= COLORS[Math.floor(Math.random() * COLORS.length)];
+      this.pulse= Math.random() * Math.PI * 2;
+      this.pulseSpeed = Math.random() * 0.02 + 0.008;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.pulse += this.pulseSpeed;
+      this.alpha = 0.15 + Math.abs(Math.sin(this.pulse)) * 0.5;
+      if (this.y < -10) this.reset();
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle   = this.color;
+      ctx.shadowBlur  = 8;
+      ctx.shadowColor = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx   = particles[i].x - particles[j].x;
+        const dy   = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.save();
+          ctx.globalAlpha = (1 - dist / 120) * 0.08;
+          ctx.strokeStyle = particles[i].color;
+          ctx.lineWidth   = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: COUNT }, () => new Particle());
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    drawConnections();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  loop();
+}
