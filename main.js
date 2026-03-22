@@ -430,4 +430,4 @@ function initParticles() {
   window.addEventListener('resize', resize);
   init();
   loop();
-} 
+}  
