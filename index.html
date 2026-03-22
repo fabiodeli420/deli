@@ -3,118 +3,319 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DELIKUSH — Premium Streetwear</title>
+  <title>DELIKUSH – Premium Streetwear</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- Luces ambiente -->
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
+  <!-- ===== CURSOR PERSONALIZADO ===== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
 
-  <!-- ── HEADER ─────────────────────────────────────────────── -->
-  <header>
-    <div class="header-logo">DELI<span>KUSH</span></div>
-    <div class="header-right">
-      <span class="header-tagline">Buenos Aires · 2026</span>
-      <button id="cart-btn" onclick="openCart()">
-        Carrito
-        <span id="cart-count">0</span>
-      </button>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo" id="logoEgg">
+        <span class="logo-deli">DELI</span><span class="logo-kush">KUSH</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#coleccion">Colección</a></li>
+        <li><a href="#pedidos">Pedidos</a></li>
+        <li><a href="#vibe">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn" onclick="openCart()">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <div class="nav-toggle" id="navToggle">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- ── HERO ───────────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Colección 2026</p>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> NEW DROP 2026
+      </div>
       <h1 class="hero-title">
-        DELI
-        <em>KUSH</em>
+        <span class="line-viste">VISTE</span>
+        <span class="line-grande">GRANDE</span>
+        <span class="line-sub">VIVE LIBRE</span>
       </h1>
+      <p class="hero-desc">Streetwear con alma. Cada prenda hecha para los que no siguen reglas.</p>
+      <div class="hero-ctas">
+        <a href="#coleccion" class="btn btn-fire">Ver Colección <i class="fas fa-arrow-right"></i></a>
+        <a href="#pedidos" class="btn btn-ghost">Hacer Pedido</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n">6+</span><span class="stat-l">Prendas</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">🇦🇷</span><span class="stat-l">Todo el país</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Premium</span></div>
+      </div>
     </div>
-    <div class="hero-right">
-      <p class="hero-desc">
-        Prendas de carácter. Cada pieza diseñada para durar,
-        construida para destacar.
-      </p>
-      <div class="hero-meta">
-        <div>
-          <p class="hero-stat-label">Envíos</p>
-          <p class="hero-stat-value">Todo el país</p>
+    <div class="hero-visual">
+      <div class="hero-card-3d">
+        <div class="card-face card-front">
+          <div class="card-glow"></div>
+          <div class="brand-dk">DK</div>
+          <p class="card-tag-text">OVERSIZE VIBES</p>
         </div>
-        <div>
-          <p class="hero-stat-label">Materiales</p>
-          <p class="hero-stat-value">Premium</p>
+      </div>
+      <div class="float-tag ft1">🧢 STREETWEAR</div>
+      <div class="float-tag ft2">👕 OVERSIZE</div>
+      <div class="float-tag ft3">🔥 KUSH</div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES STRIP ===== -->
+  <div class="strip">
+    <div class="strip-track">
+      <span><i class="fas fa-truck"></i> Envíos a todo el país</span>
+      <span class="sep">✦</span>
+      <span><i class="fas fa-star"></i> Calidad premium</span>
+      <span class="sep">✦</span>
+      <span><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</span>
+      <span class="sep">✦</span>
+      <span><i class="fas fa-fire"></i> Drops exclusivos</span>
+      <span class="sep">✦</span>
+      <span><i class="fas fa-truck"></i> Envíos a todo el país</span>
+      <span class="sep">✦</span>
+      <span><i class="fas fa-star"></i> Calidad premium</span>
+      <span class="sep">✦</span>
+      <span><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</span>
+      <span class="sep">✦</span>
+      <span><i class="fas fa-fire"></i> Drops exclusivos</span>
+      <span class="sep">✦</span>
+    </div>
+  </div>
+
+  <!-- ===== COLECCIÓN ===== -->
+  <section class="coleccion" id="coleccion">
+    <div class="section-header reveal">
+      <span class="section-tag">LO QUE TENEMOS</span>
+      <h2 class="section-title">NUESTRA <span class="fire-text">COLECCIÓN</span></h2>
+      <p class="section-sub">Prendas oversize para que te veas y te sientas único</p>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- generado por JS -->
+    </div>
+  </section>
+
+  <!-- ===== PEDIDOS ===== -->
+  <section class="pedidos" id="pedidos">
+    <div class="pedidos-inner">
+      <div class="pedidos-info reveal">
+        <span class="section-tag light">¿CÓMO PEDÍS?</span>
+        <h2 class="section-title white">HACÉ TU <span class="yellow-text">PEDIDO</span></h2>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              <h4>Elegí tu prenda</h4>
+              <p>Mirá la colección, agregala al carrito o usá el formulario.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              <h4>Completá el formulario</h4>
+              <p>Nombre, prenda, talle y color. Simple y rápido.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              <h4>Enviamos a todo el país</h4>
+              <p>Confirmamos y coordinamos el envío directo a tu puerta.</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p class="hero-stat-label">Atención</p>
-          <p class="hero-stat-value">WhatsApp</p>
+        <a href="https://wa.me/541156584277?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20DELIKUSH%20🔥"
+           target="_blank" class="btn-wa-big">
+          <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+        </a>
+      </div>
+
+      <div class="pedidos-form reveal">
+        <div class="form-card">
+          <h3><i class="fas fa-shopping-bag"></i> Formulario de Pedido</h3>
+          <form id="pedidoForm" onsubmit="enviarPedido(event)">
+            <div class="fg">
+              <label>Tu nombre *</label>
+              <input type="text" id="nombre" placeholder="¿Cómo te llamás?" required />
+            </div>
+            <div class="fg">
+              <label>Prenda *</label>
+              <select id="prenda" required>
+                <option value="">Elegí una prenda...</option>
+                <option>Remera Oversize</option>
+                <option>Buzo Hoodie</option>
+                <option>Pantalón Baggy</option>
+                <option>Jogger Oversize</option>
+                <option>Set Completo (Buzo + Pantalón)</option>
+                <option>Musculosa Oversize</option>
+                <option>Trucker Cap DK</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Talle *</label>
+              <div class="talle-options">
+                <label class="talle-label"><input type="radio" name="talle" value="S" required><span>S</span></label>
+                <label class="talle-label"><input type="radio" name="talle" value="M"><span>M</span></label>
+                <label class="talle-label"><input type="radio" name="talle" value="L"><span>L</span></label>
+                <label class="talle-label"><input type="radio" name="talle" value="XL"><span>XL</span></label>
+                <label class="talle-label"><input type="radio" name="talle" value="XXL"><span>XXL</span></label>
+              </div>
+            </div>
+            <div class="fg">
+              <label>Color preferido</label>
+              <input type="text" id="color" placeholder="Negro, blanco, verde..." />
+            </div>
+            <div class="fg">
+              <label>Nota adicional</label>
+              <textarea id="nota" rows="3" placeholder="¿Algo más que quieras aclarar?"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
+            </button>
+          </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CATÁLOGO ───────────────────────────────────────────── -->
-  <section class="catalog">
-    <div class="section-header">
-      <span class="section-title">Catálogo</span>
-      <div class="section-line"></div>
-      <span class="section-count">6 productos</span>
+  <!-- ===== VIBE ===== -->
+  <section class="vibe" id="vibe">
+    <div class="vibe-inner">
+      <div class="vibe-card reveal">
+        <div class="vibe-glow-purple"></div>
+        <div class="vibe-glow-orange"></div>
+        <div class="vibe-logo-big">DELI<span>KUSH</span></div>
+        <p class="vibe-slogan">"Viste Grande,<br>Vive Libre"</p>
+        <div class="vibe-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="vibe-text reveal">
+        <span class="section-tag">NUESTRA ESENCIA</span>
+        <h2 class="section-title">LA VIBE <span class="fire-text">DELIKUSH</span></h2>
+        <p>Somos una marca nacida de la calle, del barrio, de la música y del arte. Creemos que la ropa tiene que ser tan libre como vos.</p>
+        <p>Cada prenda <strong>DELIKUSH</strong> está pensada para quienes no siguen tendencias, sino que las crean. Oversize porque el flow no tiene límites.</p>
+        <div class="vibe-tags">
+          <span>🔥 Streetwear</span>
+          <span>🎵 Hip Hop</span>
+          <span>🌿 Kush Vibes</span>
+          <span>💜 Cultura Urbana</span>
+          <span>👑 Premium</span>
+          <span>🇦🇷 Buenos Aires</span>
+        </div>
+      </div>
     </div>
-
-    <!-- Los productos se generan desde script.js -->
-    <div class="product-grid" id="product-grid"></div>
   </section>
 
-  <!-- ── BOTTOM BAR ─────────────────────────────────────────── -->
-  <footer class="bottom-bar">
-    <div class="bottom-info">
-      <div class="info-item">
-        <strong>Envíos</strong>
-        Todo Argentina 🇦🇷
+  <!-- ===== CONTACTO ===== -->
+  <section class="contacto" id="contacto">
+    <div class="section-header reveal">
+      <span class="section-tag">CONTACTO</span>
+      <h2 class="section-title">ESTAMOS <span class="fire-text">DISPONIBLES</span></h2>
+      <p class="section-sub">Escribinos cuando quieras, te respondemos rápido 🔥</p>
+    </div>
+    <div class="contacto-grid">
+      <a href="https://wa.me/541156584277" target="_blank" class="contact-card wa-card reveal">
+        <i class="fab fa-whatsapp"></i>
+        <h4>WhatsApp</h4>
+        <p>+54 11 5658-4277</p>
+        <span class="contact-action">Escribir ahora →</span>
+      </a>
+      <div class="contact-card reveal">
+        <i class="fas fa-truck"></i>
+        <h4>Envíos</h4>
+        <p>A todo Argentina</p>
+        <span class="contact-action">Coordinamos juntos</span>
       </div>
-      <div class="info-item">
-        <strong>Pago</strong>
-        Transferencia / Efectivo
-      </div>
-      <div class="info-item">
-        <strong>Consultas</strong>
-        WhatsApp 24/7
+      <div class="contact-card reveal">
+        <i class="fas fa-clock"></i>
+        <h4>Horarios</h4>
+        <p>Lun–Sáb 10 a 21hs</p>
+        <span class="contact-action">Respondemos rápido</span>
       </div>
     </div>
-    <button class="wa-btn" onclick="openWhatsApp()">
-      Hablar por WhatsApp
-    </button>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-deli">DELI</span><span class="logo-kush">KUSH</span></div>
+        <p>Ropa oversize para los que vibran diferente.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#coleccion">Colección</a>
+        <a href="#pedidos">Pedidos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/541156584277" target="_blank" class="social-btn">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <strong>DELIKUSH</strong> · Hecho con 🔥 en Argentina</p>
+    </div>
   </footer>
 
-  <!-- ── CART OVERLAY ───────────────────────────────────────── -->
-  <div id="cart-overlay"></div>
+  <!-- ===== FLOATING WHATSAPP ===== -->
+  <a href="https://wa.me/541156584277?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20DELIKUSH%20🔥"
+     target="_blank" class="wa-float">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-tooltip">¡Pedí ahora!</span>
+  </a>
 
-  <!-- ── CART DRAWER ────────────────────────────────────────── -->
-  <div id="cart-drawer">
-    <div class="drawer-header">
-      <span class="drawer-title">Tu Carrito</span>
+  <!-- ===== CART OVERLAY ===== -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+  <!-- ===== CART DRAWER ===== -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="drawer-head">
+      <span class="drawer-title"><i class="fas fa-shopping-bag"></i> Tu Carrito</span>
       <button class="drawer-close" onclick="closeCart()">✕</button>
     </div>
-
-    <div class="drawer-items" id="cart-items">
-      <div class="drawer-empty">
-        <div class="drawer-empty-icon">🛒</div>
-        <p>Tu carrito está vacío</p>
-      </div>
-    </div>
-
-    <div class="drawer-footer">
+    <div class="drawer-items" id="drawerItems"></div>
+    <div class="drawer-foot">
       <div class="drawer-total-row">
-        <span class="drawer-total-label">Total</span>
-        <span class="drawer-total-value" id="cart-total">$0</span>
+        <span>Total</span>
+        <span id="drawerTotal" class="drawer-total-val">$0</span>
       </div>
-      <button class="checkout-btn" id="checkout-btn" onclick="checkout()" disabled>
-        Enviar pedido por WhatsApp
+      <button class="drawer-checkout" id="checkoutBtn" onclick="checkout()" disabled>
+        <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
       </button>
     </div>
   </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast"></div>
 
   <script src="main.js"></script>
 </body>
