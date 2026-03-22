@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DELIKUSH | Oversize Streetwear</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,6 +37,7 @@
       <div class="shape shape2"></div>
       <div class="shape shape3"></div>
     </div>
+
     <div class="hero-content">
       <div class="hero-badge">NEW DROP 2026</div>
       <h1 class="hero-title">
@@ -42,12 +45,13 @@
         <span class="line2">VIVÍ LIBRE</span>
         <span class="line3">OVERSIZE VIBES</span>
       </h1>
-      <p class="hero-sub">Ropa oversize con identidad urbana. DELIKUSH mezcla streetwear, actitud y una vibe única.</p>
+      <p class="hero-sub">Streetwear con identidad urbana para los que no siguen reglas. DELIKUSH es actitud y comodidad premium.</p>
       <div class="hero-ctas">
         <a href="#coleccion" class="btn btn-primary"><i class="fas fa-fire"></i> Ver colección</a>
         <a href="#pedidos" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Hacer pedido</a>
       </div>
     </div>
+
     <div class="hero-visual">
       <div class="hero-card">
         <div class="hero-card-inner">
@@ -63,9 +67,10 @@
 
   <section id="coleccion" class="coleccion">
     <div class="section-top">
-      <span class="section-mini">Lo que tenemos</span>
-      <h2 class="section-title">Nuestra Colección</h2>
+      <span class="section-mini">Lo nuevo</span>
+      <h2 class="section-title">Colección <span class="highlight">Oversize</span></h2>
     </div>
+
     <div class="products-grid">
       <div class="product-card">
         <div class="product-img-placeholder gradient-fire">
@@ -74,21 +79,40 @@
         </div>
         <div class="product-info">
           <h3>Remera Oversize</h3>
-          <p>Fit amplio, tela premium. El básico indispensable.</p>
+          <p>Fit amplio, tela premium y estilo street.</p>
           <div class="product-sizes">M / L / XL / XXL</div>
-          <button class="btn btn-card" onclick="pedirProducto('Remera Oversize')">Pedir ahora</button>
+          <button class="btn btn-card" onclick="pedirProducto('Remera Oversize')">
+            <i class="fab fa-whatsapp"></i> Pedir ahora
+          </button>
         </div>
       </div>
+
       <div class="product-card">
         <div class="product-img-placeholder gradient-purple">
-          <div class="product-badge">Nuevo</div>
+          <div class="product-badge">Top</div>
           <span>🧥</span>
         </div>
         <div class="product-info">
           <h3>Buzo Hoodie</h3>
-          <p>Capucha y comodidad total con la mejor caída.</p>
+          <p>Comodidad total con capucha y bolsillo canguro.</p>
           <div class="product-sizes">M / L / XL</div>
-          <button class="btn btn-card" onclick="pedirProducto('Buzo Hoodie')">Pedir ahora</button>
+          <button class="btn btn-card" onclick="pedirProducto('Buzo Hoodie')">
+            <i class="fab fa-whatsapp"></i> Pedir ahora
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-placeholder gradient-mix">
+          <span>👖</span>
+        </div>
+        <div class="product-info">
+          <h3>Pantalón Baggy</h3>
+          <p>Corte ancho para una presencia potente.</p>
+          <div class="product-sizes">M / L / XL</div>
+          <button class="btn btn-card" onclick="pedirProducto('Pantalón Baggy')">
+            <i class="fab fa-whatsapp"></i> Pedir ahora
+          </button>
         </div>
       </div>
     </div>
@@ -97,11 +121,21 @@
   <section id="pedidos" class="pedidos">
     <div class="pedidos-layout">
       <div class="steps-box">
-        <h3>Cómo pedir:</h3>
-        <div class="step"><div class="step-number">1</div><p>Elegí tu prenda favorita.</p></div>
-        <div class="step"><div class="step-number">2</div><p>Completá el formulario con tus datos.</p></div>
-        <div class="step"><div class="step-number">3</div><p>Te enviamos a WhatsApp para cerrar.</p></div>
+        <h3>¿Cómo comprar?</h3>
+        <div class="step">
+          <div class="step-number">1</div>
+          <p>Elegí tu prenda y talle.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <p>Completá el formulario.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <p>Te enviamos a WhatsApp para confirmar.</p>
+        </div>
       </div>
+
       <div class="pedidos-form-box">
         <form id="pedidoForm" onsubmit="enviarPedido(event)">
           <div class="form-group">
@@ -111,9 +145,10 @@
           <div class="form-group">
             <label>Prenda</label>
             <select id="prenda" required>
-              <option value="">Elegí una...</option>
+              <option value="">Seleccioná...</option>
               <option value="Remera Oversize">Remera Oversize</option>
               <option value="Buzo Hoodie">Buzo Hoodie</option>
+              <option value="Pantalón Baggy">Pantalón Baggy</option>
             </select>
           </div>
           <div class="form-group">
@@ -124,14 +159,16 @@
               <label class="radio-pill"><input type="radio" name="talle" value="XL"><span>XL</span></label>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-submit">Enviar Pedido</button>
+          <button type="submit" class="btn btn-primary btn-submit">
+            <i class="fab fa-whatsapp"></i> Enviar Pedido
+          </button>
         </form>
       </div>
     </div>
   </section>
 
   <a href="https://wa.me/541156584277" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i> <span>Consultas</span>
+    <i class="fab fa-whatsapp"></i> <span>Pedí por WhatsApp</span>
   </a>
 
   <script src="main.js"></script>
