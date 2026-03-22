@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DELIKUSH | Premium Oversize Streetwear</title>
+  <title>DELIKUSH | Premium Streetwear</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,25 +17,24 @@
       <div class="logo">DELI<span>KUSH</span></div>
       <ul class="nav-links">
         <li><a href="#inicio">HOME</a></li>
-        <li><a href="#coleccion">CATÁLOGO</a></li>
+        <li><a href="#catalogo">CATÁLOGO</a></li>
         <li><a href="#pedidos">PEDIDOS</a></li>
-        <li><a href="#contacto">CONTACTO</a></li>
       </ul>
     </div>
   </nav>
 
   <section class="hero" id="inicio">
     <div class="hero-content">
-      <div class="hero-badge">🔥 DROP 2026 - DISPONIBLE</div>
+      <div class="hero-badge">🔥 DROP 2026</div>
       <h1 class="hero-title">
         <span class="line1">VISTE</span><br>
         <span class="line2">GRANDE</span><br>
         <span class="line3">VIVE LIBRE</span>
       </h1>
-      <p class="hero-sub">Calidad premium para los que dictan sus propias reglas. Flow oversize real.</p>
+      <p class="hero-sub">Oversize real para los que vibran diferente.</p>
       <div class="hero-ctas">
-        <a href="#coleccion" class="btn btn-primary">EXPLORAR DROP</a>
-        <a href="#pedidos" class="btn btn-outline">HACER PEDIDO</a>
+        <a href="#catalogo" class="btn btn-primary">VER DROP</a>
+        <a href="#pedidos" class="btn btn-outline">PEDIR</a>
       </div>
     </div>
 
@@ -42,80 +42,45 @@
       <div class="hero-card">
         <div class="hero-card-inner">
           <div class="brand-symbol">DK</div>
-          <p class="card-tag">STREET VIBES</p>
         </div>
       </div>
-      <div class="floating-tag tag-top">👕 OVERSIZE</div>
-      <div class="floating-tag tag-bottom">🔥 KUSH MODE</div>
+      <div class="floating-tag tag-top">👕 STREETWEAR</div>
+      <div class="floating-tag tag-bottom">🔥 KUSH</div>
     </div>
   </section>
 
-  <div class="features-strip">
-    <div class="feature-item"><i class="fas fa-truck"></i> ENVÍOS A TODO EL PAÍS</div>
-    <div class="feature-sep">✦</div>
-    <div class="feature-item"><i class="fas fa-star"></i> CALIDAD PREMIUM</div>
-    <div class="feature-sep">✦</div>
-    <div class="feature-item"><i class="fab fa-whatsapp"></i> ATENCIÓN 24/7</div>
-  </div>
-
-  <section class="coleccion" id="coleccion">
-    <div class="section-header">
-      <h2 class="section-title">NUESTRA <span>COLECCIÓN</span></h2>
-      <p>Prendas diseñadas para durar y destacar.</p>
-    </div>
-
+  <section class="coleccion" id="catalogo">
+    <h2 class="section-title">NUESTRO <span>CATÁLOGO</span></h2>
     <div class="products-grid">
-      <div class="product-card" data-aos="fade-up">
-        <div class="product-img img-remera">👕<div class="badge-new">NUEVO</div></div>
+      <div class="product-card">
+        <div class="product-img">👕</div>
         <div class="product-info">
           <h3>Remera Boxy Fit</h3>
-          <p class="desc">Algodón 24/1 premium, cuello ancho.</p>
           <p class="price">$22.500</p>
           <button class="btn-card" onclick="pedir('Remera Boxy Fit', '$22.500')">COMPRAR</button>
         </div>
       </div>
-
-      <div class="product-card" data-aos="fade-up">
-        <div class="product-img img-hoodie">🧥<div class="badge-hot">HOT</div></div>
+      <div class="product-card">
+        <div class="product-img">🧥</div>
         <div class="product-info">
-          <h3>Hoodie Heavy Cotton</h3>
-          <p class="desc">Frisa invisible, capucha reforzada.</p>
+          <h3>Hoodie Heavy</h3>
           <p class="price">$45.000</p>
-          <button class="btn-card" onclick="pedir('Hoodie Heavy Cotton', '$45.000')">COMPRAR</button>
+          <button class="btn-card" onclick="pedir('Hoodie Heavy', '$45.000')">COMPRAR</button>
         </div>
       </div>
-
-      <div class="product-card" data-aos="fade-up">
-        <div class="product-img img-baggy">👖</div>
+      <div class="product-card">
+        <div class="product-img">👖</div>
         <div class="product-info">
-          <h3>Pantalón Baggy Cargo</h3>
-          <p class="desc">Corte ultra relajado con 6 bolsillos.</p>
+          <h3>Pantalón Cargo</h3>
           <p class="price">$38.900</p>
-          <button class="btn-card" onclick="pedir('Pantalón Baggy Cargo', '$38.900')">COMPRAR</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-aos="fade-up">
-        <div class="product-img img-set">🔥</div>
-        <div class="product-info">
-          <h3>Combo Full Delikush</h3>
-          <p class="desc">Hoodie + Jogger a elección.</p>
-          <p class="price"><span class="old-price">$75.000</span> $65.000</p>
-          <button class="btn-card sale" onclick="pedir('Combo Full Delikush', '$65.000')">PEDIR COMBO</button>
+          <button class="btn-card" onclick="pedir('Pantalón Cargo', '$38.900')">COMPRAR</button>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="footer" id="contacto">
-    <div class="footer-content">
-      <div class="footer-logo">DELI<span>KUSH</span></div>
-      <p>VISTE GRANDE, VIVE LIBRE.</p>
-      <div class="socials">
-        <a href="https://wa.me/541156584277"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
+  <footer class="footer">
+    <p>© 2026 DELIKUSH BRAND</p>
   </footer>
 
   <a href="https://wa.me/541156584277" class="whatsapp-float" target="_blank">
