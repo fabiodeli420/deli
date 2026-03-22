@@ -1,314 +1,102 @@
-/* --- CONFIGURACIÓN BASE --- */
 :root {
-  --bg: #050505;
-  --dark-card: #111111;
-  --fire: #ff6b35;
-  --kush-yellow: #f7c948;
-  --purple-vibes: #a855f7;
-  --white: #ffffff;
-  --text-gray: #b8b8c2;
-  --glass: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.08);
+    --bg-dark: #0a0a0a;
+    --accent: #ff6b35;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-html { 
-  scroll-behavior: smooth; 
+/* Fondo Animado */
+.bg-gradient {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+    z-index: -1;
 }
 
-body { 
-  background-color: var(--bg); 
-  color: var(--white); 
-  font-family: 'Montserrat', sans-serif; 
-  overflow-x: hidden;
-  line-height: 1.6;
+.bg-gradient::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
+    animation: moveGradient 15s linear infinite;
 }
 
-/* --- BARRA DE NAVEGACIÓN PRO --- */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 25px 8%;
-  background: rgba(5, 5, 5, 0.8);
-  backdrop-filter: blur(15px);
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
+@keyframes moveGradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.logo { 
-  font-family: 'Bebas Neue'; 
-  font-size: 2.8rem; 
-  letter-spacing: 2px;
+/* Contenedor Bento */
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 180px);
+    gap: 15px;
+    width: 90%;
+    max-width: 1000px;
+    padding: 20px;
 }
 
-.logo span { 
-  color: var(--fire); 
-  text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+.bento-item {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-links { 
-  display: flex; 
-  list-style: none; 
-  gap: 35px; 
+.bento-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.nav-links a { 
-  color: var(--text-gray); 
-  text-decoration: none; 
-  font-weight: 700; 
-  font-size: 0.85rem; 
-  text-transform: uppercase;
-  transition: 0.3s ease;
+/* Estilos Específicos de los Bloques */
+.profile-card { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; }
+.logo { font-family: 'Bebas Neue'; font-size: 3rem; }
+.logo span { color: var(--accent); }
+
+.hero-visual { 
+    grid-column: span 2; 
+    grid-row: span 2; 
+    background: linear-gradient(135deg, #ff6b35, #a855f7);
+    display: grid; place-items: center;
+}
+.dk-symbol { font-size: 8rem; font-weight: 900; opacity: 0.2; }
+
+.shop-card { grid-column: span 2; background: white; color: black; cursor: pointer; }
+.shop-card h3 { font-family: 'Bebas Neue'; font-size: 2rem; }
+
+.product-featured { grid-row: span 2; text-align: center; }
+.img-placeholder { font-size: 5rem; margin-bottom: 10px; }
+
+.social-card { grid-column: span 2; display: flex; align-items: center; justify-content: center; }
+.wa-btn { 
+    text-decoration: none; color: #25d366; font-weight: 900; 
+    font-size: 1.2rem; display: flex; gap: 10px; align-items: center;
 }
 
-.nav-links a:hover { 
-  color: var(--white); 
-}
-
-/* --- SECCIÓN HERO (GIGANTE Y CON MOVIMIENTO) --- */
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0 8%;
-  padding-top: 100px;
-  background: radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.05) 0%, transparent 40%);
-}
-
-.hero-content {
-  max-width: 600px;
-  animation: slideInLeft 1s ease-out;
-}
-
-.hero-badge {
-  background: var(--fire);
-  padding: 6px 14px;
-  font-weight: 900;
-  font-size: 0.75rem;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-.hero-title {
-  font-family: 'Bebas Neue';
-  font-size: clamp(4rem, 10vw, 7.5rem);
-  line-height: 0.85;
-  margin-bottom: 25px;
-}
-
-.line2 { 
-  color: var(--fire); 
-}
-
-.hero-sub {
-  color: var(--text-gray);
-  font-size: 1.1rem;
-  margin-bottom: 40px;
-  max-width: 400px;
-}
-
-/* BOTONES */
-.hero-ctas { display: flex; gap: 20px; }
-
-.btn {
-  padding: 18px 40px;
-  border-radius: 12px;
-  font-weight: 900;
-  text-decoration: none;
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  font-size: 0.9rem;
-}
-
-.btn-primary { 
-  background: var(--white); 
-  color: #000; 
-}
-
-.btn-outline { 
-  border: 2px solid #333; 
-  color: var(--white); 
-}
-
-.btn:hover { 
-  transform: translateY(-8px); 
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-}
-
-.btn-primary:hover { 
-  background: var(--fire); 
-  color: white; 
-}
-
-/* --- EL VISUAL 3D (LO QUE TIENE MOVIMIENTO) --- */
-.hero-visual {
-  position: relative;
-  animation: floating3D 5s ease-in-out infinite;
-}
-
-@keyframes floating3D {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-35px) rotate(3deg); }
-}
-
-.hero-card {
-  width: 300px;
-  height: 380px;
-  background: linear-gradient(135deg, var(--purple-vibes), #6366f1);
-  border-radius: 30px;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 40px 80px rgba(168, 85, 247, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.brand-symbol {
-  font-family: 'Bebas Neue';
-  font-size: 8rem;
-  color: rgba(255, 255, 255, 0.15);
-  user-select: none;
-}
-
-.floating-tag {
-  position: absolute;
-  background: rgba(0,0,0,0.9);
-  backdrop-filter: blur(10px);
-  padding: 12px 22px;
-  border-radius: 50px;
-  font-weight: 900;
-  font-size: 0.75rem;
-  border: 1px solid var(--border);
-  white-space: nowrap;
-}
-
-.tag-top { top: -10px; right: -40px; animation: pulse 2s infinite; }
-.tag-bottom { bottom: 40px; left: -60px; }
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(255, 107, 53, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
-}
-
-/* --- CATÁLOGO DE PRODUCTOS --- */
-.coleccion {
-  padding: 120px 8%;
-  background: #080808;
-}
-
-.section-title {
-  font-family: 'Bebas Neue';
-  font-size: 4.5rem;
-  text-align: center;
-  margin-bottom: 80px;
-}
-
-.section-title span { color: var(--fire); }
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-}
-
-.product-card {
-  background: var(--dark-card);
-  padding: 25px;
-  border-radius: 25px;
-  border: 1px solid var(--border);
-  transition: 0.5s ease;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-/* Esta clase se activa con el JS que te pasé antes */
-.product-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.product-card:hover {
-  border-color: var(--kush-yellow);
-  transform: translateY(-10px) scale(1.02);
-}
-
-.product-img {
-  height: 300px;
-  background: #000;
-  border-radius: 20px;
-  display: grid;
-  place-items: center;
-  font-size: 6rem;
-  margin-bottom: 25px;
-  position: relative;
-}
-
-.price {
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--kush-yellow);
-  margin: 15px 0;
-}
-
-.btn-card {
-  width: 100%;
-  padding: 16px;
-  background: var(--white);
-  color: black;
-  border: none;
-  border-radius: 12px;
-  font-weight: 900;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-card:hover {
-  background: var(--fire);
-  color: white;
-}
-
-/* --- BOTÓN WHATSAPP --- */
-.whatsapp-float {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background: #25d366;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 2.5rem;
-  color: white;
-  z-index: 2000;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-  transition: 0.3s;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.15) rotate(15deg);
-}
-
-/* --- ANIMACIONES EXTRA --- */
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
+/* Responsivo para Celular */
 @media (max-width: 768px) {
-  .hero { flex-direction: column; text-align: center; }
-  .hero-title { font-size: 4.5rem; }
-  .hero-visual { margin-top: 50px; }
-  .nav-links { display: none; }
+    .bento-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+    .hero-visual { grid-column: span 2; height: 300px; }
 }
