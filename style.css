@@ -1,56 +1,98 @@
-/* --- ANIMACIONES DE MOVIMIENTO --- */
-
-/* Entrada suave desde abajo */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+:root {
+  --bg: #050505;
+  --fire: #ff6b35;
+  --kush: #f7c948;
+  --dark-grey: #121212;
+  --white: #ffffff;
 }
 
-/* Efecto flotante para elementos visuales */
-@keyframes floating {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  background-color: var(--bg); 
+  color: var(--white); 
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
 }
 
-/* Aplicar animaciones al Hero */
-.hero-content {
-  animation: fadeInUp 1s ease-out forwards;
+/* NAVBAR PROFESIONAL */
+.navbar {
+  position: fixed; width: 100%; padding: 25px 5%;
+  background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px);
+  z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+.logo { font-family: 'Bebas Neue'; font-size: 2.8rem; letter-spacing: 2px; }
+.logo span { color: var(--fire); }
+.nav-links { display: flex; list-style: none; gap: 35px; }
+.nav-links a { text-decoration: none; color: #999; font-weight: 800; font-size: 0.85rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--white); }
+
+/* HERO SECCIÓN */
+.hero {
+  height: 100vh; display: flex; align-items: center; justify-content: space-around;
+  padding: 0 8%; padding-top: 100px;
+}
+.hero-title { font-family: 'Bebas Neue'; font-size: 6.5rem; line-height: 0.85; margin-bottom: 25px; }
+.line2 { color: var(--fire); text-shadow: 0 0 30px rgba(255, 107, 53, 0.3); }
+.hero-badge { background: var(--fire); padding: 6px 15px; font-weight: 900; font-size: 0.8rem; border-radius: 4px; }
+.hero-sub { max-width: 450px; color: #bbb; font-size: 1.1rem; margin-bottom: 35px; }
+
+/* BOTONES */
+.btn { padding: 18px 35px; border-radius: 8px; font-weight: 900; text-decoration: none; display: inline-block; transition: 0.4s; margin-right: 15px; }
+.btn-primary { background: var(--white); color: #000; }
+.btn-outline { border: 2px solid #333; color: white; }
+.btn-primary:hover { background: var(--fire); color: white; transform: translateY(-5px); }
+
+/* MOVIMIENTO 3D (FLOTACIÓN) */
+.hero-visual { position: relative; animation: floatEffect 5s ease-in-out infinite; }
+@keyframes floatEffect {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(2deg); }
 }
 
-.hero-visual {
-  animation: floating 4s ease-in-out infinite;
+.hero-card {
+  width: 280px; height: 350px; background: linear-gradient(135deg, #a855f7, #6366f1);
+  border-radius: 25px; display: grid; place-items: center; position: relative;
+  box-shadow: 0 30px 60px rgba(168, 85, 247, 0.2);
 }
-
+.brand-symbol { font-family: 'Oswald'; font-size: 7rem; color: rgba(255,255,255,0.2); }
 .floating-tag {
-  animation: floating 3s ease-in-out infinite alternate;
+  position: absolute; background: #000; border: 1px solid #333; padding: 10px 20px;
+  border-radius: 50px; font-weight: 900; font-size: 0.75rem;
 }
+.tag-top { top: -20px; right: -40px; }
+.tag-bottom { bottom: 30px; left: -60px; }
 
-/* Animación para las tarjetas de producto al hacer scroll */
-.product-card {
-  opacity: 0; /* Empiezan invisibles para que el JS las active */
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
+/* GRILLA DE PRODUCTOS */
+.products-grid { 
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 40px; padding: 80px 8%; 
 }
-
-.product-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+.product-card { 
+  background: var(--dark-grey); border-radius: 25px; padding: 20px; 
+  transition: 0.5s; border: 1px solid #222; position: relative;
 }
+.product-card:hover { border-color: var(--kush); transform: scale(1.02); }
 
-/* Efecto de pulso en el botón de WhatsApp */
+.product-img { 
+  height: 280px; background: #0a0a0a; border-radius: 18px; 
+  display: grid; place-items: center; font-size: 5rem; margin-bottom: 20px; 
+}
+.price { color: var(--kush); font-size: 1.8rem; font-weight: 900; margin: 15px 0; }
+.old-price { font-size: 1.1rem; text-decoration: line-through; color: #555; margin-right: 10px; }
+
+.btn-card { 
+  width: 100%; padding: 15px; background: var(--white); border: none; 
+  border-radius: 12px; font-weight: 900; cursor: pointer; transition: 0.3s;
+}
+.btn-card:hover { background: var(--fire); color: white; }
+.btn-card.sale { background: var(--fire); color: white; }
+
+/* WHATSAPP FLOAT */
 .whatsapp-float {
-  animation: pulse 2s infinite;
+  position: fixed; bottom: 40px; right: 40px; background: #25d366;
+  width: 65px; height: 65px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 2.2rem; color: white; z-index: 2000; transition: 0.3s;
 }
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
+.whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
