@@ -323,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTicker();
   initEasterEgg();
   initParticles();
+  initDkBackground();
   observeReveal();
 
   // Entradas hero con delay
@@ -430,4 +431,41 @@ function initParticles() {
   window.addEventListener('resize', resize);
   init();
   loop();
-}  
+}
+
+// ── FONDO ANIMADO DK ─────────────────────────────────────────────
+function initDkBackground() {
+  const container = document.getElementById('dkBg');
+  if (!container) return;
+
+  const WORDS  = ['DK', 'DELI', 'KUSH', 'DK', 'OVERSIZE', 'DK', 'STREETWEAR', 'DK', 'VISTE GRANDE', 'DK'];
+  const COLORS = ['#ff6b35', '#a855f7', '#f7c948', '#6366f1', '#ff9d6f', '#c084fc', '#ff6b35'];
+  const COUNT  = 28;
+
+  for (let i = 0; i < COUNT; i++) {
+    const el   = document.createElement('div');
+    el.className = 'dk-letter';
+    const word = WORDS[Math.floor(Math.random() * WORDS.length)];
+    const col  = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const size = Math.random() * 80 + 24;
+    const op   = (Math.random() * 0.07 + 0.03).toFixed(3);
+    const x    = Math.random() * 95;
+    const y    = Math.random() * 95;
+    const rot  = (Math.random() * 40 - 20).toFixed(1);
+    const dur  = (Math.random() * 8 + 6).toFixed(1);
+    const delay= (Math.random() * -10).toFixed(1);
+
+    el.textContent = word;
+    el.style.cssText = `
+      --col: ${col};
+      --size: ${size}px;
+      --op: ${op};
+      --x: ${x}%;
+      --y: ${y}%;
+      --rot: ${rot}deg;
+      --dur: ${dur}s;
+      --delay: ${delay}s;
+    `;
+    container.appendChild(el);
+  }
+} 
