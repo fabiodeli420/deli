@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark-mural: #0a0a0c; /* Base oscura mural texturizado */
+            --bg-dark-mural: #0a0a0c; /* Base oscura mural urbana texturizado */
             --accent-orange: #ff6b35; /* El naranja DK */
             --accent-purple: #a855f7; /* Violeta Neón */
             --white: #ffffff;
@@ -30,49 +30,58 @@
             position: relative;
         }
 
-        /* --- NUEVO FONDO "MURAL PATRÓN DELIKUSH" (DEFINITIVO) --- */
+        /* --- NUEVO FONDO "MURAL URBANO DK ANIMADO" (DEFINITIVO) --- */
         .background-scene {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2; /* Más atrás */
+            z-index: -10; /* Más atrás */
             background: var(--bg-dark-mural);
-            /* Textura base mural */
+            /* Textura base mural urbano/concreto */
             background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.2;
+            opacity: 0.15;
+            background-size: cover;
         }
 
-        /* Patrón DK Animado (El secreto de la onda Deli) */
-        .background-pattern {
+        /* Logo DK Gigante Transparente */
+        .background-scene::before {
+            content: "DK";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 80rem; /* Gigante */
+            color: rgba(255, 255, 255, 0.05); /* Sutil marca de agua */
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Resplandores de Neón Animados (Moviéndose por el fondo) */
+        .neon-resplandor {
             position: fixed;
-            top: 0; left: 0; width: 200%; height: 200%; /* Más grande para el movimiento */
-            z-index: -1;
-            /* Creación del patrón DK con CSS puro */
-            background-image: 
-                radial-gradient(var(--glass) 2px, transparent 2px), /* Puntos sutiles */
-                linear-gradient(45deg, var(--glass) 25%, transparent 25%), 
-                linear-gradient(-45deg, var(--glass) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, var(--glass) 75%),
-                linear-gradient(-45deg, transparent 75%, var(--glass) 75%);
-            background-size: 100px 100px; /* Tamaño del patrón */
-            background-position: 0 0, 50px 0, 50px 0, 0 0, 0 0;
-            opacity: 0.15; /* Sutil */
-            animation: move-pattern 60s linear infinite;
+            top: -200px; left: -200px;
+            width: 800px; height: 800px;
+            z-index: -5;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: neon-orange-move 20s infinite ease-in-out;
         }
 
-        /* Movimiento diagonal del patrón */
-        @keyframes move-pattern {
-            from { transform: translate(0, 0); }
-            to { transform: translate(-100px, -100px); }
+        .neon-resplandor-2 {
+            top: initial; left: initial;
+            bottom: -200px; right: -200px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+            animation: neon-purple-move 25s infinite ease-in-out;
         }
 
-        /* Resplandor Neón sobre el patrón */
-        .neon-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(at 10% 10%, rgba(255, 107, 53, 0.1) 0px, transparent 40%),
-                radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.1) 0px, transparent 40%);
+        @keyframes neon-orange-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(200px, 200px); }
+        }
+
+        @keyframes neon-purple-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-200px, -200px); }
         }
 
         /* --- CONTENEDOR BENTO (EXTENDIDO - 6 PRODUCTOS) --- */
@@ -89,8 +98,8 @@
         /* --- ESTILO DE TARJETAS (Mantenemos tu Glassmorphism) --- */
         .card {
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-radius: 28px;
             padding: 30px;
@@ -154,8 +163,8 @@
 <body>
 
     <div class="background-scene"></div>
-    <div class="background-pattern"></div>
-    <div class="neon-glow"></div>
+    <div class="neon-resplandor"></div>
+    <div class="neon-resplandor neon-resplandor-2"></div>
 
     <div class="bento-grid">
         <div class="card card-large">
