@@ -1,65 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | Oversize Streetwear</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DELIKUSH | Oversize Streetwear</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">DELI<span>KUSH</span></a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#coleccion">Colección</a></li>
-                <li><a href="#pedidos">Pedidos</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-deli">DELI</span><span class="logo-kush">KUSH</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#coleccion">Colección</a></li>
+        <li><a href="#pedidos">Pedidos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-toggle" id="navToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
 
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>VESTÍ GRANDE.<br>VIVÍ LIBRE.</h1>
-            <p>Streetwear con identidad urbana. DELIKUSH es actitud y comodidad premium.</p>
-            <a href="#coleccion" class="btn-main">VER COLECCIÓN</a>
+  <section class="hero" id="inicio">
+    <div class="hero-bg-shapes">
+      <div class="shape shape1"></div>
+      <div class="shape shape2"></div>
+      <div class="shape shape3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">🔥 NEW DROP 2026</div>
+      <h1 class="hero-title">
+        <span class="line1">VISTE</span>
+        <span class="line2">GRANDE</span>
+        <span class="line3">VIVE LIBRE</span>
+      </h1>
+      <p class="hero-sub">Ropa oversize con onda para los que no siguen reglas</p>
+      <div class="hero-ctas">
+        <a href="#coleccion" class="btn btn-primary">Ver Colección</a>
+        <a href="#pedidos" class="btn btn-outline">Hacer Pedido</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="brand-symbol">DK</div>
+          <p class="card-tag">OVERSIZE VIBES</p>
         </div>
-    </section>
+      </div>
+      <div class="floating-tag tag1">🧢 STREETWEAR</div>
+      <div class="floating-tag tag2">👕 OVERSIZE</div>
+      <div class="floating-tag tag3">🔥 KUSH</div>
+    </div>
+  </section>
 
-    <section id="coleccion" class="productos">
-        <h2 class="section-title">Nuestra Colección</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-img" style="background: var(--fire);">👕</div>
-                <h3>Remera Oversize</h3>
-                <p>Algodón premium, talle real.</p>
-                <button onclick="pedirProducto('Remera Oversize')">Pedir por WhatsApp</button>
-            </div>
-            <div class="card">
-                <div class="card-img" style="background: var(--purple);">🧥</div>
-                <h3>Buzo Hoodie</h3>
-                <p>Máximo estilo y abrigo.</p>
-                <button onclick="pedirProducto('Buzo Hoodie')">Pedir por WhatsApp</button>
-            </div>
+  <div class="features-strip">
+    <div class="feature-item"><i class="fas fa-truck"></i> Envíos a todo el país</div>
+    <div class="feature-sep">✦</div>
+    <div class="feature-item"><i class="fas fa-star"></i> Calidad premium</div>
+    <div class="feature-sep">✦</div>
+    <div class="feature-item"><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</div>
+    <div class="feature-sep">✦</div>
+    <div class="feature-item"><i class="fas fa-fire"></i> Drops exclusivos</div>
+  </div>
+
+  <section class="coleccion" id="coleccion">
+    <div class="section-header">
+      <span class="section-tag">LO QUE TENEMOS</span>
+      <h2 class="section-title">NUESTRA <span class="highlight">COLECCIÓN</span></h2>
+      <p class="section-sub">Prendas oversize para que te veas y te sientas único</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg, #ff6b35, #f7931e);">
+          <span class="product-icon">👕</span>
+          <div class="product-badge">BESTSELLER</div>
         </div>
-    </section>
+        <div class="product-info">
+          <h3>Remera Oversize</h3>
+          <p>Fit amplio, tela premium, varios colores. El básico que no puede faltar.</p>
+          <button class="btn btn-card" onclick="pedirProducto('Remera Oversize')">
+            <i class="fab fa-whatsapp"></i> Pedir ahora
+          </button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" style="background: linear-gradient(135deg, #a855f7, #6366f1);">
+          <span class="product-icon">🧥</span>
+          <div class="product-badge new-badge">NUEVO</div>
+        </div>
+        <div class="product-info">
+          <h3>Buzo Hoodie</h3>
+          <p>Capucha, bolsillo canguro, super cómodo para el día a día.</p>
+          <button class="btn btn-card" onclick="pedirProducto('Buzo Hoodie')">
+            <i class="fab fa-whatsapp"></i> Pedir ahora
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="pedidos" class="form-section">
-        <h2>Hacé tu pedido</h2>
+  <section class="pedidos" id="pedidos">
+    <div class="pedidos-container">
+      <div class="pedidos-form-box">
+        <h3><i class="fas fa-shopping-bag"></i> Formulario de Pedido</h3>
         <form id="pedidoForm" onsubmit="enviarPedido(event)">
-            <input type="text" id="nombre" placeholder="Tu Nombre" required>
+          <div class="form-group">
+            <label>Tu nombre *</label>
+            <input type="text" id="nombre" placeholder="¿Cómo te llamás?" required />
+          </div>
+          <div class="form-group">
+            <label>Prenda *</label>
             <select id="prenda" required>
-                <option value="">Elegí prenda...</option>
-                <option value="Remera Oversize">Remera Oversize</option>
-                <option value="Buzo Hoodie">Buzo Hoodie</option>
+              <option value="">Elegí una prenda...</option>
+              <option value="Remera Oversize">Remera Oversize</option>
+              <option value="Buzo Hoodie">Buzo Hoodie</option>
+              <option value="Pantalón Baggy">Pantalón Baggy</option>
             </select>
-            <button type="submit" class="btn-enviar">Enviar a WhatsApp</button>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
+          </button>
         </form>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <script src="./main.js"></script>
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2026 <strong>DELIKUSH</strong> · Hecho con 🔥 en Argentina</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
