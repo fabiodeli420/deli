@@ -1,102 +1,82 @@
 :root {
-    --bg-dark: #0a0a0a;
+    --bg: #030303;
     --accent: #ff6b35;
-    --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background-color: var(--bg-dark);
+body { 
+    background-color: var(--bg); 
+    color: white; 
     font-family: 'Inter', sans-serif;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Fondo Animado */
-.bg-gradient {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+/* Fondo Dinámico */
+.bg-animate {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
     z-index: -1;
 }
 
-.bg-gradient::after {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle at center, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
-    animation: moveGradient 15s linear infinite;
-}
+.wrapper { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
-@keyframes moveGradient {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+.header { text-align: center; margin-bottom: 40px; }
+.logo { font-family: 'Bebas Neue'; font-size: 4.5rem; letter-spacing: 3px; }
+.logo span { color: var(--accent); }
 
-/* Contenedor Bento */
-.bento-container {
+/* Grid Estilo Bento */
+.bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 180px);
+    grid-auto-rows: 220px;
     gap: 15px;
-    width: 90%;
-    max-width: 1000px;
-    padding: 20px;
 }
 
 .bento-item {
     background: var(--glass);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 25px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 28px;
+    padding: 30px;
+    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
 
 .bento-item:hover {
-    transform: translateY(-5px) scale(1.02);
     border-color: var(--accent);
-    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.1);
 }
 
-/* Estilos Específicos de los Bloques */
-.profile-card { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; }
-.logo { font-family: 'Bebas Neue'; font-size: 3rem; }
-.logo span { color: var(--accent); }
+/* Tamaños de cajas */
+.hero-card { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+.hero-card h1 { font-family: 'Bebas Neue'; font-size: 5rem; line-height: 0.9; }
+.hero-card span { color: var(--accent); }
+.tag { background: var(--accent); font-weight: 900; font-size: 0.7rem; padding: 4px 10px; border-radius: 5px; width: fit-content; }
 
-.hero-visual { 
-    grid-column: span 2; 
-    grid-row: span 2; 
-    background: linear-gradient(135deg, #ff6b35, #a855f7);
-    display: grid; place-items: center;
+.visual-card { grid-column: span 2; grid-row: span 2; background: linear-gradient(135deg, #ff6b35, #a855f7); display: grid; place-items: center; }
+.dk-logo { font-family: 'Bebas Neue'; font-size: 12rem; opacity: 0.25; animation: float 4s ease-in-out infinite; }
+
+.product-card { grid-column: span 1; grid-row: span 2; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+.emoji { font-size: 6rem; padding: 20px; }
+.price { color: var(--accent); font-weight: 900; font-size: 1.8rem; }
+.buy-btn { background: white; border: none; padding: 15px; border-radius: 12px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+.buy-btn:hover { background: var(--accent); color: white; }
+
+.wa-card { grid-column: span 2; background: rgba(37, 211, 102, 0.05); display: flex; align-items: center; gap: 20px; cursor: pointer; border-color: rgba(37, 211, 102, 0.2); }
+.wa-card i { font-size: 3.5rem; color: #25d366; }
+
+.shipping-card { grid-column: span 2; display: flex; align-items: center; gap: 20px; font-weight: 700; }
+.shipping-card i { font-size: 2.5rem; color: var(--accent); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
 }
-.dk-symbol { font-size: 8rem; font-weight: 900; opacity: 0.2; }
 
-.shop-card { grid-column: span 2; background: white; color: black; cursor: pointer; }
-.shop-card h3 { font-family: 'Bebas Neue'; font-size: 2rem; }
-
-.product-featured { grid-row: span 2; text-align: center; }
-.img-placeholder { font-size: 5rem; margin-bottom: 10px; }
-
-.social-card { grid-column: span 2; display: flex; align-items: center; justify-content: center; }
-.wa-btn { 
-    text-decoration: none; color: #25d366; font-weight: 900; 
-    font-size: 1.2rem; display: flex; gap: 10px; align-items: center;
-}
-
-/* Responsivo para Celular */
-@media (max-width: 768px) {
-    .bento-container {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-    }
-    .hero-visual { grid-column: span 2; height: 300px; }
+@media (max-width: 800px) {
+    .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+    .hero-card, .visual-card, .wa-card, .shipping-card { grid-column: span 2; }
 }
