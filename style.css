@@ -1,54 +1,49 @@
 :root {
-    --bg-main: #f0f4f8;
-    --p-pink: #fdf2f8;
-    --p-blue: #e0f2fe;
-    --p-orange: #ffedd5;
-    --glass: rgba(255, 255, 255, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.7);
-    --text: #2d3436;
+    --bg-base: #fdf2f8;
+    --glass: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.8);
     --accent: #f97316;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-main);
+    background-color: var(--bg-base);
     font-family: 'Montserrat', sans-serif;
-    color: var(--text);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     overflow-x: hidden;
+    padding: 20px;
 }
 
-/* Fondo de nubes pastel animado */
-.bg-scene {
+/* Animación de fondo pastel */
+.bg-container {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: -1;
-    background: linear-gradient(135deg, var(--p-pink), var(--p-blue));
 }
 
 .blob {
     position: absolute;
+    width: 600px; height: 600px;
+    filter: blur(100px);
     border-radius: 50%;
-    filter: blur(80px);
-    z-index: -1;
+    opacity: 0.5;
     animation: move 20s infinite alternate ease-in-out;
 }
 
-.blob-1 { width: 500px; height: 500px; background: var(--p-orange); top: -10%; left: -10%; }
-.blob-2 { width: 400px; height: 400px; background: var(--p-pink); bottom: -10%; right: -10%; animation-delay: -5s; }
-.blob-3 { width: 300px; height: 300px; background: var(--p-blue); top: 40%; left: 30%; animation-delay: -10s; }
+.orange { background: #ffedd5; top: -10%; left: -10%; }
+.purple { background: #ede9fe; bottom: -10%; right: -10%; animation-delay: -5s; }
+.blue { background: #e0f2fe; top: 40%; left: 30%; animation-delay: -10s; }
 
 @keyframes move {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(100px, 50px) scale(1.1); }
+    from { transform: translate(0, 0); }
+    to { transform: translate(100px, 100px); }
 }
 
-/* Grilla Bento */
+/* Grilla */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -58,47 +53,34 @@ body {
     width: 100%;
 }
 
-/* Tarjetas Estilo Cristal Pastel */
 .card {
     background: var(--glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 30px;
     padding: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    justify-content: center;
+    transition: 0.4s;
     cursor: pointer;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
     transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.7);
 }
 
-/* Tamaños */
 .card-large { grid-column: span 2; grid-row: span 2; }
 .card-tall { grid-column: span 1; grid-row: span 2; }
 .card-wide { grid-column: span 2; grid-row: span 1; }
 .card-standard { grid-column: span 1; grid-row: span 2; }
 
-/* Contenido */
-.logo-text { font-family: 'Bebas Neue'; font-size: 5rem; line-height: 0.9; }
+.logo-text { font-family: 'Bebas Neue'; font-size: 5rem; }
 .logo-text span { color: var(--accent); }
-.slogan { font-size: 0.7rem; font-weight: 800; letter-spacing: 4px; opacity: 0.6; margin-top: 10px; }
-
-.visual { font-size: 5rem; text-align: center; }
-.visual.large { font-size: 7rem; }
-
-h3 { font-family: 'Bebas Neue'; font-size: 1.8rem; }
-.price { font-weight: 800; color: var(--accent); font-size: 1.4rem; }
-
-.wa-card { background: #25d366; color: white; border: none; align-items: center; justify-content: center; }
-.combo-card { background: var(--p-purple); text-align: center; justify-content: center; }
+.visual { font-size: 5rem; text-align: center; margin-bottom: 10px; }
+.price { font-weight: 900; color: var(--accent); font-size: 1.5rem; }
+.whatsapp { background: #25d366; color: white; border: none; align-items: center; }
 
 @media (max-width: 768px) {
     .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
