@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | Catálogo Premium Streetwear 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>DELIKUSH | Catálogo Premium Streetwear - Pastel Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark-mural: #0a0a0c; /* Base oscura mural urbana texturizado */
-            --accent-orange: #ff6b35; /* El naranja DK */
-            --accent-purple: #a855f7; /* Violeta Neón */
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            /* NUEVA PALETA DE COLORES PASTEL */
+            --bg-pastel: #fdf2f8; /* Rosa bebé muy suave de base */
+            --pastel-orange: #ffedd5; /* Naranja pastel suave */
+            --pastel-purple: #ede9fe; /* Violeta/Lavanda pastel suave */
+            --pastel-blue: #e0f2fe; /* Azul cielo pastel suave */
+            --text-dark: #1f2937; /* Gris muy oscuro para legibilidad */
+            --card-white: #ffffff; /* Tarjetas blancas puras */
+            --card-border: rgba(0, 0, 0, 0.05); /* Borde muy sutil */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            background-color: var(--bg-dark-mural); 
-            color: var(--white); 
+            background-color: var(--bg-pastel); 
+            color: var(--text-dark); 
             font-family: 'Montserrat', sans-serif; 
             display: flex; 
             justify-content: center; 
@@ -30,58 +32,24 @@
             position: relative;
         }
 
-        /* --- NUEVO FONDO "MURAL URBANO DK ANIMADO" (DEFINITIVO) --- */
+        /* --- NUEVO FONDO "MESH PASTEL" (PROFUNDIDAD SUAVE) --- */
         .background-scene {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -10; /* Más atrás */
-            background: var(--bg-dark-mural);
-            /* Textura base mural urbano/concreto */
-            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.15;
-            background-size: cover;
+            z-index: -10;
+            background: var(--bg-pastel);
+            background-image: 
+                radial-gradient(at 10% 10%, var(--pastel-orange) 0px, transparent 40%),
+                radial-gradient(at 90% 10%, var(--pastel-purple) 0px, transparent 40%),
+                radial-gradient(at 50% 50%, var(--pastel-blue) 0px, transparent 50%),
+                radial-gradient(at 10% 90%, var(--pastel-purple) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, var(--pastel-orange) 0px, transparent 40%);
+            animation: mesh-glow 20s infinite alternate ease-in-out;
         }
 
-        /* Logo DK Gigante Transparente */
-        .background-scene::before {
-            content: "DK";
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 80rem; /* Gigante */
-            color: rgba(255, 255, 255, 0.05); /* Sutil marca de agua */
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        /* Resplandores de Neón Animados (Moviéndose por el fondo) */
-        .neon-resplandor {
-            position: fixed;
-            top: -200px; left: -200px;
-            width: 800px; height: 800px;
-            z-index: -5;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: neon-orange-move 20s infinite ease-in-out;
-        }
-
-        .neon-resplandor-2 {
-            top: initial; left: initial;
-            bottom: -200px; right: -200px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
-            animation: neon-purple-move 25s infinite ease-in-out;
-        }
-
-        @keyframes neon-orange-move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(200px, 200px); }
-        }
-
-        @keyframes neon-purple-move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-200px, -200px); }
+        @keyframes mesh-glow {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
         /* --- CONTENEDOR BENTO (EXTENDIDO - 6 PRODUCTOS) --- */
@@ -95,29 +63,28 @@
             z-index: 10;
         }
 
-        /* --- ESTILO DE TARJETAS (Mantenemos tu Glassmorphism) --- */
+        /* --- ESTILO DE TARJETAS (LIMPIAS Y BLANCAS) --- */
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
+            background: var(--card-white);
+            border: 1px solid var(--card-border);
+            border-radius: 30px;
             padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
             overflow: hidden;
             position: relative;
+            /* Sombra suave para volumen */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
 
-        /* Hover dinámico 3D */
+        /* Hover dinámico limpio */
         .card:hover {
-            transform: translateY(-10px) rotateX(4deg) rotateY(2deg);
-            border-color: var(--accent-orange);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 20px rgba(255, 107, 53, 0.15);
+            transform: translateY(-8px) rotateX(2deg) rotateY(1deg);
+            border-color: rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
         }
 
         /* TAMAÑOS BENTO */
@@ -127,30 +94,27 @@
         .card-standard { grid-column: span 1; grid-row: span 2; }
 
         /* DISEÑO INTERNO */
-        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; line-height: 0.9; letter-spacing: 2px; }
-        .logo-text span { color: var(--accent-orange); text-shadow: 0 0 15px rgba(255, 107, 53, 0.4); }
-        .slogan { font-size: 0.8rem; font-weight: 700; opacity: 0.5; letter-spacing: 6px; margin-top: 15px; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 5.5rem; line-height: 0.9; letter-spacing: 2px; color: var(--text-dark); }
+        .logo-text span { color: #f97316; /* Naranja más fuerte para el logo pero que combine */ }
+        .slogan { font-size: 0.8rem; font-weight: 600; opacity: 0.7; letter-spacing: 5px; margin-top: 15px; color: var(--text-dark); }
 
         /* Estilos de Producto */
-        .product-visual { font-size: 6rem; text-align: center; margin-bottom: 20px; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.4)); }
+        .product-visual { font-size: 6rem; text-align: center; margin-bottom: 20px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); }
         
         .product-info { text-align: left; }
-        .product-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 1.1; margin-bottom: 5px; }
-        .product-desc { font-size: 0.8rem; opacity: 0.6; margin-bottom: 15px; }
-        .product-price { font-weight: 900; color: var(--accent-orange); font-size: 1.6rem; }
+        .product-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 1.1; margin-bottom: 5px; color: var(--text-dark); }
+        .product-desc { font-size: 0.85rem; opacity: 0.7; margin-bottom: 15px; color: var(--text-dark); }
+        .product-price { font-weight: 800; color: #f97316; font-size: 1.8rem; }
 
-        /* Botón WhatsApp */
-        .whatsapp-card { background: #25d366; color: white; border: none; flex-direction: row; gap: 20px; align-items: center; justify-content: center; border-radius: 50px; }
-        .whatsapp-card i { font-size: 2.5rem; }
-        .whatsapp-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; margin: 0; }
+        /* Botón WhatsApp Pastel */
+        .whatsapp-card { background: #d1fae5; /* Verde menta pastel suave */ color: #065f46; /* Gris menta oscuro */ border: none; flex-direction: row; gap: 15px; align-items: center; justify-content: center; border-radius: 50px; }
+        .whatsapp-card i { font-size: 2.2rem; }
+        .whatsapp-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin: 0; }
 
-        /* Info Card */
-        .card-info { text-align: center; justify-content: center; }
-        .card-info h4 { font-size: 0.7rem; opacity: 0.5; margin-bottom: 5px; }
-        .card-info p { font-weight: 900; font-size: 1rem; }
-
-        /* Badge HOT */
-        .badge-hot { position: absolute; top: 20px; right: 20px; background: var(--accent-orange); color: white; padding: 5px 10px; border-radius: 4px; font-weight: 900; font-size: 0.7rem; }
+        /* Info Card Pastel */
+        .card-info { text-align: center; justify-content: center; background-color: var(--pastel-blue); border: none; }
+        .card-info h4 { font-size: 0.75rem; opacity: 0.6; margin-bottom: 5px; color: var(--text-dark); }
+        .card-info p { font-weight: 800; font-size: 1.1rem; color: var(--text-dark); }
 
         /* RESPONSIVE MÓVIL (Fija) */
         @media (max-width: 800px) {
@@ -163,8 +127,6 @@
 <body>
 
     <div class="background-scene"></div>
-    <div class="neon-resplandor"></div>
-    <div class="neon-resplandor neon-resplandor-2"></div>
 
     <div class="bento-grid">
         <div class="card card-large">
@@ -173,7 +135,6 @@
         </div>
 
         <div class="card card-standard product-1" onclick="pedir('Boxy Fit Tee - Off White', '$22.500')">
-            <span class="badge-hot">NUEVO</span>
             <div class="product-visual">👕</div>
             <div class="product-info">
                 <h3 class="product-title">BOXY FIT TEE</h3>
@@ -192,7 +153,7 @@
         </div>
 
         <div class="card card-wide whatsapp-card" onclick="window.open('https://wa.me/541156584277')">
-            <h3>PEDIR AHORA POR WHATSAPP 🔥</h3>
+            <h3>PEDIR POR WHATSAPP</h3>
         </div>
 
         <div class="card card-standard product-3" onclick="pedir('Pantalón Baggy Cargo', '$38.900')">
@@ -222,7 +183,7 @@
             </div>
         </div>
 
-        <div class="card card-large product-6 dk-glow" onclick="pedir('Combo Hoodie + Baggy', '$75.000')" style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(168, 85, 247, 0.3)); justify-content: center; align-items: center;">
+        <div class="card card-large product-6 dk-glow" onclick="pedir('Combo Hoodie + Baggy', '$75.000')" style="background-color: var(--pastel-purple); border: none; justify-content: center; align-items: center;">
             <div class="product-visual" style="font-size: 8rem; position: absolute; opacity: 0.1; top: 0; left: 0;">🧥👖🧢</div>
             <div class="product-info" style="text-align: center;">
                 <h3 class="product-title" style="font-size: 3.5rem;">COMBO DK</h3>
@@ -241,11 +202,11 @@
     <script>
         function pedir(producto, precio) {
             const tel = "541156584277";
-            const msj = encodeURIComponent(`¡Hola DELIKUSH! 🔥 Quiero info de: ${producto} que sale ${precio}.`);
+            const msj = encodeURIComponent(`¡Hola DELIKUSH! Quiero info de: ${producto} que sale ${precio}.`);
             window.open(`https://wa.me/${tel}?text=${msj}`, '_blank');
         }
 
-        // Efecto Tilt 3D
+        // Efecto Tilt 3D (Limpio y sutil)
         document.querySelectorAll('.card').forEach(item => {
             item.addEventListener('mousemove', (e) => {
                 const rect = item.getBoundingClientRect();
@@ -253,8 +214,8 @@
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = (centerY - y) / 10;
-                const rotateY = (x - centerX) / 10;
+                const rotateX = (centerY - y) / 15; // Más sutil
+                const rotateY = (x - centerX) / 15; // Más sutil
                 item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
             });
 
