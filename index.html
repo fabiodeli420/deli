@@ -3,66 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | Premium Streetwear</title>
+    <title>DELIKUSH | Streetwear</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-animate"></div>
+    <div class="bg-glow"></div>
 
-    <div class="wrapper">
-        <header class="header">
-            <div class="logo">DELI<span>KUSH</span></div>
-            <p>VISTE GRANDE. VIVE LIBRE.</p>
+    <div class="bento-wrapper">
+        <header class="header-main">
+            <h1 class="logo">DELI<span>KUSH</span></h1>
         </header>
 
-        <div class="bento-grid">
-            <div class="bento-item hero-card">
-                <span class="tag">NUEVO DROP</span>
-                <h1>ESTILO <br><span>OVERSIZE</span></h1>
-                <p>2026 Collection</p>
+        <div class="grid-layout">
+            <div class="card card-big">
+                <span class="mini-tag">DROP 2026</span>
+                <h2>VISTE<br><span>GRANDE</span></h2>
+                <p>Oversize Culture.</p>
             </div>
 
-            <div class="bento-item visual-card">
-                <div class="dk-logo">DK</div>
+            <div class="card card-visual">
+                <div class="dk-float">DK</div>
             </div>
 
-            <div class="bento-item product-card">
-                <div class="emoji">👕</div>
-                <div class="info">
-                    <h3>Boxy Tee</h3>
-                    <p class="price">$22.500</p>
-                    <button class="buy-btn" onclick="pedir('Boxy Tee', '$22.500')">COMPRAR</button>
-                </div>
+            <div class="card card-item">
+                <div class="icon">👕</div>
+                <h3>Boxy Fit</h3>
+                <p class="price">$22.500</p>
+                <button class="btn-wa" onclick="pedir('Boxy Fit')">PEDIR</button>
             </div>
 
-            <div class="bento-item product-card">
-                <div class="emoji">🧥</div>
-                <div class="info">
-                    <h3>Heavy Hoodie</h3>
-                    <p class="price">$45.000</p>
-                    <button class="buy-btn" onclick="pedir('Heavy Hoodie', '$45.000')">COMPRAR</button>
-                </div>
+            <div class="card card-item">
+                <div class="icon">🧥</div>
+                <h3>Hoodie</h3>
+                <p class="price">$45.000</p>
+                <button class="btn-wa" onclick="pedir('Hoodie Heavy')">PEDIR</button>
             </div>
 
-            <div class="bento-item wa-card" onclick="window.open('https://wa.me/541156584277')">
+            <div class="card card-wide" onclick="window.open('https://wa.me/541156584277')">
                 <i class="fab fa-whatsapp"></i>
-                <div class="wa-text">
-                    <h3>HACER PEDIDO</h3>
-                    <p>Atención 24/7</p>
+                <div>
+                    <h3>WHATSAPP DIRECTO</h3>
+                    <p>Consultá por talles y stock</p>
                 </div>
-            </div>
-
-            <div class="bento-item shipping-card">
-                <i class="fas fa-truck-fast"></i>
-                <p>Envíos a todo el país 🇦🇷</p>
             </div>
         </div>
-
-        <footer class="footer">
-            <p>© 2026 DELIKUSH BRAND</p>
-        </footer>
     </div>
 
     <script src="main.js"></script>
