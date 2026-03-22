@@ -218,7 +218,7 @@ ul { list-style: none; }
 .badge-dot {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--fire);
-  animation: pulse-dot 1.5s ease-in-out infinite;
+  animation: pulse-dot 1.5s ease-in-out infinite;F
 }
 @keyframes pulse-dot {
   0%,100% { opacity: 1; transform: scale(1); }
@@ -1017,12 +1017,12 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-.dk-letter {
+.dk-l {
   position: absolute;
   font-family: 'Bebas Neue', sans-serif;
   font-size: var(--size);
   color: transparent;
-  -webkit-text-stroke: 1px var(--col);
+  -webkit-text-stroke: 2px var(--col);
   opacity: var(--op);
   left: var(--x);
   top: var(--y);
