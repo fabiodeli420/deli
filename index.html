@@ -3,51 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | Streetwear</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>DELIKUSH | 2026</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-glow"></div>
-
-    <div class="bento-wrapper">
-        <header class="header-main">
+    <div class="bento-container">
+        <div class="bento-item card-logo">
             <h1 class="logo">DELI<span>KUSH</span></h1>
-        </header>
+            <p>VISTE GRANDE</p>
+        </div>
 
-        <div class="grid-layout">
-            <div class="card card-big">
-                <span class="mini-tag">DROP 2026</span>
-                <h2>VISTE<br><span>GRANDE</span></h2>
-                <p>Oversize Culture.</p>
-            </div>
+        <div class="bento-item card-visual">
+            <div class="dk-symbol">DK</div>
+        </div>
 
-            <div class="card card-visual">
-                <div class="dk-float">DK</div>
-            </div>
+        <div class="bento-item card-product" onclick="pedir('Boxy Fit')">
+            <span class="emoji">👕</span>
+            <p>BOXY FIT</p>
+            <p class="price">$22.500</p>
+        </div>
 
-            <div class="card card-item">
-                <div class="icon">👕</div>
-                <h3>Boxy Fit</h3>
-                <p class="price">$22.500</p>
-                <button class="btn-wa" onclick="pedir('Boxy Fit')">PEDIR</button>
-            </div>
+        <div class="bento-item card-product" onclick="pedir('Hoodie')">
+            <span class="emoji">🧥</span>
+            <p>HOODIE</p>
+            <p class="price">$45.000</p>
+        </div>
 
-            <div class="card card-item">
-                <div class="icon">🧥</div>
-                <h3>Hoodie</h3>
-                <p class="price">$45.000</p>
-                <button class="btn-wa" onclick="pedir('Hoodie Heavy')">PEDIR</button>
-            </div>
-
-            <div class="card card-wide" onclick="window.open('https://wa.me/541156584277')">
-                <i class="fab fa-whatsapp"></i>
-                <div>
-                    <h3>WHATSAPP DIRECTO</h3>
-                    <p>Consultá por talles y stock</p>
-                </div>
-            </div>
+        <div class="bento-item card-wa" onclick="window.open('https://wa.me/541156584277')">
+            <h3>WHATSAPP 🔥</h3>
+            <p>PEDIR AHORA</p>
         </div>
     </div>
 
