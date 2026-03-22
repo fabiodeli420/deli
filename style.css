@@ -1026,8 +1026,7 @@ ul { list-style: none; }
   opacity: var(--op);
   left: var(--x);
   top: var(--y);
-  animation: dkFloat var(--dur) ease-in-out infinite var(--delay);
-  user-select: none;
+  animation: dkPulse var(--dur) ease-in-out infinite var(--del);
   filter: blur(0.3px);
 }
 
