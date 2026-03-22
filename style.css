@@ -982,4 +982,27 @@ ul { list-style: none; }
   .line-viste, .line-grande { font-size: 4.2rem; }
   .line-sub { font-size: 1.8rem; letter-spacing: 5px; }
 }
- 
+
+/* ── PARTÍCULAS ── */
+#particles-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* Asegurarse que todo el contenido quede sobre las partículas */
+.navbar, section, footer, .wa-float,
+.cart-overlay, .cart-drawer, .toast,
+.cursor, .cursor-follower {
+  position: relative;
+  z-index: 1;
+}
+.navbar { z-index: 1000; }
+.cart-overlay { z-index: 1100; }
+.cart-drawer  { z-index: 1200; }
+.toast        { z-index: 2000; }
+.cursor       { z-index: 9999; }
+.cursor-follower { z-index: 9998; }
