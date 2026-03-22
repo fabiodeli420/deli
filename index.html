@@ -5,224 +5,187 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LIMA LIMÓN — Streetwear Fresco</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- FONDO -->
-  <div class="ll-bg">
-    <span class="ll-l" style="left:4%;top:6%;font-size:88px;--col:#a8e63d;--dur:7s;--del:-1s;--rot:-10deg">LL</span>
-    <span class="ll-l" style="left:18%;top:20%;font-size:40px;--col:#f5e642;--dur:9s;--del:-3s;--rot:7deg">LIMA</span>
-    <span class="ll-l" style="left:38%;top:4%;font-size:115px;--col:#a8e63d;--dur:11s;--del:-5s;--rot:4deg">LL</span>
-    <span class="ll-l" style="left:62%;top:12%;font-size:52px;--col:#f5e642;--dur:8s;--del:-2s;--rot:-6deg">LIMÓN</span>
-    <span class="ll-l" style="left:80%;top:2%;font-size:78px;--col:#a8e63d;--dur:10s;--del:-4s;--rot:14deg">LL</span>
-    <span class="ll-l" style="left:2%;top:36%;font-size:46px;--col:#c8f060;--dur:12s;--del:-6s;--rot:-4deg">FRESCO</span>
-    <span class="ll-l" style="left:28%;top:40%;font-size:98px;--col:#f5e642;--dur:8s;--del:-1s;--rot:9deg">LL</span>
-    <span class="ll-l" style="left:56%;top:33%;font-size:38px;--col:#a8e63d;--dur:9s;--del:-7s;--rot:-8deg">STREETWEAR</span>
-    <span class="ll-l" style="left:76%;top:38%;font-size:68px;--col:#f5e642;--dur:7s;--del:-3s;--rot:5deg">LL</span>
-    <span class="ll-l" style="left:8%;top:58%;font-size:58px;--col:#a8e63d;--dur:10s;--del:-2s;--rot:-13deg">LL</span>
-    <span class="ll-l" style="left:32%;top:62%;font-size:44px;--col:#c8f060;--dur:11s;--del:-5s;--rot:10deg">LIMA</span>
-    <span class="ll-l" style="left:54%;top:56%;font-size:82px;--col:#f5e642;--dur:8s;--del:-4s;--rot:-3deg">LL</span>
-    <span class="ll-l" style="left:74%;top:65%;font-size:50px;--col:#a8e63d;--dur:9s;--del:-8s;--rot:8deg">LIMÓN</span>
-    <span class="ll-l" style="left:88%;top:52%;font-size:62px;--col:#f5e642;--dur:12s;--del:-1s;--rot:-10deg">LL</span>
-    <span class="ll-l" style="left:14%;top:78%;font-size:92px;--col:#a8e63d;--dur:10s;--del:-6s;--rot:6deg">LL</span>
-    <span class="ll-l" style="left:44%;top:80%;font-size:42px;--col:#f5e642;--dur:7s;--del:-3s;--rot:-7deg">FRESCO</span>
-    <span class="ll-l" style="left:66%;top:83%;font-size:72px;--col:#c8f060;--dur:9s;--del:-5s;--rot:12deg">LL</span>
-    <span class="ll-l" style="left:88%;top:76%;font-size:56px;--col:#a8e63d;--dur:11s;--del:-2s;--rot:-5deg">LIMA</span>
+  <!-- FONDO ANIMADO -->
+  <div class="dk-bg" id="dkBg">
+    <span class="dk-l" style="--x:5%;--y:8%;--rot:-15deg;--dur:7s;--del:0s;--col:#a8e63d;">LL</span>
+    <span class="dk-l" style="--x:18%;--y:22%;--rot:10deg;--dur:9s;--del:-2s;--col:#f5e642;--size:3.5rem;">LIMA</span>
+    <span class="dk-l" style="--x:35%;--y:5%;--rot:-8deg;--dur:8s;--del:-1s;--col:#a8e63d;--size:2.8rem;">LL</span>
+    <span class="dk-l" style="--x:52%;--y:18%;--rot:12deg;--dur:10s;--del:-3s;--col:#f5e642;--size:4rem;">LIMÓN</span>
+    <span class="dk-l" style="--x:70%;--y:7%;--rot:-5deg;--dur:7.5s;--del:-0.5s;--col:#a8e63d;--size:2.5rem;">LL</span>
+    <span class="dk-l" style="--x:85%;--y:20%;--rot:18deg;--dur:9.5s;--del:-4s;--col:#f5e642;--size:3rem;">FRESCO</span>
+    <span class="dk-l" style="--x:92%;--y:45%;--rot:-12deg;--dur:8s;--del:-1.5s;--col:#a8e63d;--size:2.2rem;">LL</span>
+    <span class="dk-l" style="--x:78%;--y:60%;--rot:7deg;--dur:11s;--del:-2.5s;--col:#f5e642;--size:3.8rem;">STREETWEAR</span>
+    <span class="dk-l" style="--x:60%;--y:75%;--rot:-20deg;--dur:8.5s;--del:-0.8s;--col:#a8e63d;--size:2.8rem;">LL</span>
+    <span class="dk-l" style="--x:40%;--y:85%;--rot:15deg;--dur:10s;--del:-3.5s;--col:#f5e642;--size:3.2rem;">LIMA</span>
+    <span class="dk-l" style="--x:22%;--y:70%;--rot:-10deg;--dur:7s;--del:-1.2s;--col:#a8e63d;--size:2.5rem;">LL</span>
+    <span class="dk-l" style="--x:8%;--y:55%;--rot:5deg;--dur:9s;--del:-4.5s;--col:#f5e642;--size:3.5rem;">LIMÓN</span>
+    <span class="dk-l" style="--x:2%;--y:80%;--rot:-18deg;--dur:8s;--del:-2s;--col:#a8e63d;--size:2rem;">LL</span>
+    <span class="dk-l" style="--x:48%;--y:50%;--rot:8deg;--dur:12s;--del:-1s;--col:#f5e642;--size:2.5rem;">LL</span>
+    <span class="dk-l" style="--x:30%;--y:40%;--rot:-6deg;--dur:9s;--del:-3s;--col:#a8e63d;--size:3rem;">FRESCO</span>
+    <span class="dk-l" style="--x:65%;--y:35%;--rot:14deg;--dur:8s;--del:-0.3s;--col:#f5e642;--size:2.2rem;">LL</span>
+    <span class="dk-l" style="--x:88%;--y:80%;--rot:-9deg;--dur:10s;--del:-2.8s;--col:#a8e63d;--size:3.5rem;">LIMA</span>
+    <span class="dk-l" style="--x:14%;--y:38%;--rot:20deg;--dur:7.5s;--del:-1.8s;--col:#f5e642;--size:2.8rem;">LL</span>
   </div>
-
-  <!-- CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-follower" id="cursorFollower"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="logo" id="logoEgg">
-        <span class="logo-lima">LIMA</span><span class="logo-limon">LIMÓN</span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#coleccion">Colección</a></li>
-        <li><a href="#pedidos">Pedidos</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-logo">LIMA<span>LIMÓN</span></a>
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#coleccion" class="nav-link">Colección</a></li>
+        <li><a href="#pedidos" class="nav-link">Pedidos</a></li>
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="cart-btn" id="cartBtn" onclick="openCart()">
-          <i class="fas fa-shopping-bag"></i>
+        <button class="cart-btn" id="cartBtn">
+          <span class="cart-icon">🛒</span>
           <span class="cart-count" id="cartCount">0</span>
         </button>
-        <div class="nav-toggle" id="navToggle">
+        <button class="hamburger" id="hamburger">
           <span></span><span></span><span></span>
-        </div>
+        </button>
       </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#coleccion" class="nav-link">Colección</a>
+      <a href="#pedidos" class="nav-link">Pedidos</a>
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-bg">
-      <div class="blob blob1"></div>
-      <div class="blob blob2"></div>
-      <div class="blob blob3"></div>
-      <div class="grid-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span> NEW DROP 2026
-      </div>
-      <h1 class="hero-title">
-        <span class="line1">VISTE</span>
-        <span class="line2">FRESCO</span>
-        <span class="line3">VIVE LIBRE</span>
-      </h1>
-      <p class="hero-desc">Streetwear con energía. Cada prenda hecha para los que se mueven diferente.</p>
-      <div class="hero-ctas">
-        <a href="#coleccion" class="btn btn-lima">Ver Colección <i class="fas fa-arrow-right"></i></a>
-        <a href="#pedidos" class="btn btn-ghost">Hacer Pedido</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-n">6+</span><span class="stat-l">Prendas</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-n">🇦🇷</span><span class="stat-l">Todo el país</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Premium</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-card-3d">
-        <div class="card-glow"></div>
-        <div class="brand-ll">LL</div>
-        <p class="card-tag-text">FRESH VIBES</p>
-      </div>
-      <div class="float-tag ft1">🍋 LIMÓN</div>
-      <div class="float-tag ft2">👕 OVERSIZE</div>
-      <div class="float-tag ft3">🌿 FRESCO</div>
-    </div>
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      <span>SCROLL</span>
-    </div>
-  </section>
-
-  <!-- STRIP -->
-  <div class="strip">
-    <div class="strip-track">
-      <span><i class="fas fa-truck"></i> Envíos a todo el país</span>
-      <span class="sep">✦</span>
-      <span><i class="fas fa-star"></i> Calidad premium</span>
-      <span class="sep">✦</span>
-      <span><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</span>
-      <span class="sep">✦</span>
-      <span><i class="fas fa-fire"></i> Drops exclusivos</span>
-      <span class="sep">✦</span>
-      <span><i class="fas fa-truck"></i> Envíos a todo el país</span>
-      <span class="sep">✦</span>
-      <span><i class="fas fa-star"></i> Calidad premium</span>
-      <span class="sep">✦</span>
-      <span><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</span>
-      <span class="sep">✦</span>
-      <span><i class="fas fa-fire"></i> Drops exclusivos</span>
-      <span class="sep">✦</span>
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Envíos a todo el país</span><span class="sep">✦</span>
+      <span>Calidad premium</span><span class="sep">✦</span>
+      <span>Pedidos por WhatsApp</span><span class="sep">✦</span>
+      <span>Drops exclusivos</span><span class="sep">✦</span>
+      <span>Envíos a todo el país</span><span class="sep">✦</span>
+      <span>Calidad premium</span><span class="sep">✦</span>
+      <span>Pedidos por WhatsApp</span><span class="sep">✦</span>
+      <span>Drops exclusivos</span><span class="sep">✦</span>
     </div>
   </div>
 
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <div class="hero-badge">NEW DROP 2026</div>
+      <h1 class="hero-title">VISTE FRESCO<br><span>VIVE LIBRE</span></h1>
+      <p class="hero-sub">Streetwear con energía. Cada prenda hecha para los que se mueven diferente.</p>
+      <div class="hero-btns">
+        <a href="#coleccion" class="btn btn-primary">Ver Colección</a>
+        <a href="#pedidos" class="btn btn-outline">Hacer Pedido</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n">6+</span><span class="stat-l">Prendas</span></div>
+        <div class="stat"><span class="stat-n">🇦🇷</span><span class="stat-l">Todo el país</span></div>
+        <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Premium</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-inner">
+        <div class="hero-logo-big">LL</div>
+        <div class="hero-tags">
+          <span>FRESH VIBES</span>
+          <span>🍋 LIMÓN</span>
+          <span>👕 OVERSIZE</span>
+          <span>🌿 FRESCO</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
+
   <!-- COLECCIÓN -->
-  <section class="coleccion" id="coleccion">
+  <section class="section" id="coleccion">
     <div class="section-header reveal">
       <span class="section-tag">LO QUE TENEMOS</span>
-      <h2 class="section-title">NUESTRA <span class="lime-text">COLECCIÓN</span></h2>
-      <p class="section-sub">Prendas oversize con energía fresca para que te destaques</p>
+      <h2>NUESTRA COLECCIÓN</h2>
+      <p>Prendas oversize con energía fresca para que te destaques</p>
     </div>
     <div class="products-grid" id="productsGrid"></div>
   </section>
 
   <!-- PEDIDOS -->
-  <section class="pedidos" id="pedidos">
-    <div class="pedidos-inner">
-      <div class="pedidos-info reveal">
-        <span class="section-tag light">¿CÓMO PEDÍS?</span>
-        <h2 class="section-title white">HACÉ TU <span class="lemon-text">PEDIDO</span></h2>
-        <div class="steps">
-          <div class="step reveal">
-            <div class="step-num">01</div>
-            <div class="step-text"><h4>Elegí tu prenda</h4><p>Mirá la colección, agregala al carrito o usá el formulario.</p></div>
-          </div>
-          <div class="step reveal">
-            <div class="step-num">02</div>
-            <div class="step-text"><h4>Completá el formulario</h4><p>Nombre, prenda, talle y color. Simple y rápido.</p></div>
-          </div>
-          <div class="step reveal">
-            <div class="step-num">03</div>
-            <div class="step-text"><h4>Enviamos a todo el país</h4><p>Confirmamos y coordinamos el envío directo a tu puerta.</p></div>
-          </div>
-        </div>
-        <a href="https://wa.me/541156584277?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20LIMA%20LIMÓN%20🍋"
-           target="_blank" class="btn-wa-big">
-          <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
-        </a>
+  <section class="section section-alt" id="pedidos">
+    <div class="section-header reveal">
+      <span class="section-tag">¿CÓMO PEDÍS?</span>
+      <h2>HACÉ TU PEDIDO</h2>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Elegí tu prenda</h4>
+        <p>Mirá la colección, agregala al carrito o usá el formulario.</p>
       </div>
-      <div class="pedidos-form reveal">
-        <div class="form-card">
-          <h3><i class="fas fa-shopping-bag"></i> Formulario de Pedido</h3>
-          <form id="pedidoForm" onsubmit="enviarPedido(event)">
-            <div class="fg"><label>Tu nombre *</label><input type="text" id="nombre" placeholder="¿Cómo te llamás?" required /></div>
-            <div class="fg">
-              <label>Prenda *</label>
-              <select id="prenda" required>
-                <option value="">Elegí una prenda...</option>
-                <option>Remera Oversize</option>
-                <option>Buzo Hoodie</option>
-                <option>Pantalón Baggy</option>
-                <option>Jogger Oversize</option>
-                <option>Set Completo (Buzo + Pantalón)</option>
-                <option>Trucker Cap LL</option>
-              </select>
-            </div>
-            <div class="fg">
-              <label>Talle *</label>
-              <div class="talle-options">
-                <label class="talle-label"><input type="radio" name="talle" value="S" required><span>S</span></label>
-                <label class="talle-label"><input type="radio" name="talle" value="M"><span>M</span></label>
-                <label class="talle-label"><input type="radio" name="talle" value="L"><span>L</span></label>
-                <label class="talle-label"><input type="radio" name="talle" value="XL"><span>XL</span></label>
-                <label class="talle-label"><input type="radio" name="talle" value="XXL"><span>XXL</span></label>
-              </div>
-            </div>
-            <div class="fg"><label>Color preferido</label><input type="text" id="color" placeholder="Verde, blanco, negro..." /></div>
-            <div class="fg"><label>Nota adicional</label><textarea id="nota" rows="3" placeholder="¿Algo más?"></textarea></div>
-            <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
-          </form>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Completá el formulario</h4>
+        <p>Nombre, prenda, talle y color. Simple y rápido.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Enviamos a todo el país</h4>
+        <p>Confirmamos y coordinamos el envío directo a tu puerta.</p>
+      </div>
+    </div>
+    <div class="form-wrap reveal">
+      <a href="https://wa.me/541156584277?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20LIMA%20LIMÓN%20🍋" class="btn btn-primary" target="_blank">Escribir por WhatsApp</a>
+      <div class="order-form">
+        <h3>Formulario de Pedido</h3>
+        <input type="text" id="fname" placeholder="Tu nombre *" />
+        <select id="fprenda">
+          <option value="">Elegí una prenda...</option>
+          <option>Remera Oversize</option>
+          <option>Buzo Hoodie</option>
+          <option>Pantalón Baggy</option>
+          <option>Jogger Oversize</option>
+          <option>Set Completo (Buzo + Pantalón)</option>
+          <option>Trucker Cap LL</option>
+        </select>
+        <div class="talle-group">
+          <label>Talle *</label>
+          <div class="talles">
+            <button type="button" class="talle-btn" onclick="selectTalle(this)">S</button>
+            <button type="button" class="talle-btn" onclick="selectTalle(this)">M</button>
+            <button type="button" class="talle-btn" onclick="selectTalle(this)">L</button>
+            <button type="button" class="talle-btn" onclick="selectTalle(this)">XL</button>
+            <button type="button" class="talle-btn" onclick="selectTalle(this)">XXL</button>
+          </div>
         </div>
+        <input type="text" id="fcolor" placeholder="Color preferido" />
+        <textarea id="fnota" placeholder="Nota adicional"></textarea>
+        <button type="button" class="btn btn-primary w100" onclick="sendOrder()">Enviar pedido por WhatsApp</button>
       </div>
     </div>
   </section>
 
   <!-- TESTIMONIOS -->
-  <section class="testimonios">
+  <section class="section" id="testimonios">
     <div class="section-header reveal">
       <span class="section-tag">LO QUE DICEN</span>
-      <h2 class="section-title">CLIENTES <span class="lime-text">REALES</span></h2>
-      <p class="section-sub">Gente que ya viste fresco con Lima Limón 🍋</p>
+      <h2>CLIENTES REALES</h2>
+      <p>Gente que ya viste fresco con Lima Limón 🍋</p>
     </div>
-    <div class="testi-grid" id="testimoniosGrid"></div>
+    <div class="testimonios-grid reveal" id="testimoniosGrid"></div>
   </section>
 
-  <!-- NOSOTROS -->
-  <section class="vibe" id="nosotros">
-    <div class="vibe-inner">
-      <div class="vibe-card reveal">
-        <div class="vibe-glow-lima"></div>
-        <div class="vibe-glow-limon"></div>
-        <div class="vibe-logo-big">LIMA<span>LIMÓN</span></div>
-        <p class="vibe-slogan">"Viste Fresco,<br>Vive Libre"</p>
-        <div class="vibe-dots"><span></span><span></span><span></span></div>
-      </div>
-      <div class="vibe-text reveal">
+  <!-- VIBE -->
+  <section class="section section-vibe" id="nosotros">
+    <div class="vibe-inner reveal">
+      <div class="vibe-logo">LIMA<br>LIMÓN</div>
+      <div class="vibe-text">
         <span class="section-tag">NUESTRA ESENCIA</span>
-        <h2 class="section-title">LA VIBE <span class="lime-text">LIMA LIMÓN</span></h2>
+        <h2>LA VIBE LIMA LIMÓN</h2>
         <p>Una marca nacida de la calle, del barrio, de la música y del arte. Creemos que la ropa tiene que ser tan fresca como vos.</p>
         <p>Cada prenda <strong>LIMA LIMÓN</strong> está pensada para quienes no siguen tendencias, sino que las crean. Oversize porque el flow no tiene límites.</p>
         <div class="vibe-tags">
@@ -238,36 +201,36 @@
   </section>
 
   <!-- CONTACTO -->
-  <section class="contacto" id="contacto">
+  <section class="section section-alt" id="contacto">
     <div class="section-header reveal">
       <span class="section-tag">CONTACTO</span>
-      <h2 class="section-title">ESTAMOS <span class="lime-text">DISPONIBLES</span></h2>
-      <p class="section-sub">Escribinos cuando quieras, te respondemos rápido 🍋</p>
+      <h2>ESTAMOS DISPONIBLES</h2>
+      <p>Escribinos cuando quieras, te respondemos rápido 🍋</p>
     </div>
-    <div class="contacto-grid">
-      <a href="https://wa.me/541156584277" target="_blank" class="contact-card wa-card reveal">
-        <i class="fab fa-whatsapp"></i>
+    <div class="contact-grid reveal">
+      <a href="https://wa.me/541156584277" class="contact-card" target="_blank">
+        <div class="contact-icon">💬</div>
         <h4>WhatsApp</h4>
         <p>+54 11 5658-4277</p>
-        <span class="contact-action">Escribir ahora →</span>
+        <span class="contact-link">Escribir ahora →</span>
       </a>
-      <div class="contact-card reveal">
-        <i class="fas fa-truck"></i>
+      <div class="contact-card">
+        <div class="contact-icon">🚚</div>
         <h4>Envíos</h4>
         <p>A todo Argentina</p>
-        <span class="contact-action">Coordinamos juntos</span>
+        <span class="contact-link">Coordinamos juntos</span>
       </div>
-      <div class="contact-card reveal">
-        <i class="fas fa-clock"></i>
+      <div class="contact-card">
+        <div class="contact-icon">🕐</div>
         <h4>Horarios</h4>
         <p>Lun–Sáb 10 a 21hs</p>
-        <span class="contact-action">Respondemos rápido</span>
+        <span class="contact-link">Respondemos rápido</span>
       </div>
-      <a href="https://www.instagram.com/" target="_blank" class="contact-card ig-card reveal">
-        <i class="fab fa-instagram"></i>
+      <a href="https://www.instagram.com/deli.kush/" class="contact-card" target="_blank">
+        <div class="contact-icon">📸</div>
         <h4>Instagram</h4>
-        <p>@lima.limon</p>
-        <span class="contact-action">Seguinos →</span>
+        <p>@deli.kush</p>
+        <span class="contact-link">Seguinos →</span>
       </a>
     </div>
   </section>
@@ -275,52 +238,45 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo"><span class="logo-lima">LIMA</span><span class="logo-limon">LIMÓN</span></div>
-        <p>Streetwear fresco para los que vibran diferente.</p>
-      </div>
+      <div class="footer-logo">LIMA<span>LIMÓN</span></div>
+      <p>Streetwear fresco para los que vibran diferente.</p>
       <div class="footer-links">
         <a href="#inicio">Inicio</a>
         <a href="#coleccion">Colección</a>
         <a href="#pedidos">Pedidos</a>
         <a href="#contacto">Contacto</a>
       </div>
-      <div class="footer-social">
-        <a href="https://wa.me/541156584277" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/" target="_blank" class="social-btn ig-btn"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 <strong>LIMA LIMÓN</strong> · Hecho con 🍋 en Argentina</p>
+      <p class="footer-copy">© 2026 <strong>LIMA LIMÓN</strong> · Hecho con 🍋 en Argentina</p>
     </div>
   </footer>
 
-  <!-- WHATSAPP FLOTANTE -->
-  <a href="https://wa.me/541156584277?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20LIMA%20LIMÓN%20🍋" target="_blank" class="wa-float">
-    <i class="fab fa-whatsapp"></i>
-    <span class="wa-tooltip">¡Pedí ahora!</span>
-  </a>
-
-  <!-- CART -->
+  <!-- CARRITO -->
   <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
   <div class="cart-drawer" id="cartDrawer">
-    <div class="drawer-head">
-      <span class="drawer-title"><i class="fas fa-shopping-bag"></i> Tu Carrito</span>
-      <button class="drawer-close" onclick="closeCart()">✕</button>
+    <div class="cart-header">
+      <h3>Tu Carrito</h3>
+      <button onclick="closeCart()">✕</button>
     </div>
-    <div class="drawer-items" id="drawerItems"></div>
-    <div class="drawer-foot">
-      <div class="drawer-total-row">
-        <span>Total</span>
-        <span id="drawerTotal" class="drawer-total-val">$0</span>
-      </div>
-      <button class="drawer-checkout" id="checkoutBtn" onclick="checkout()" disabled>
-        <i class="fab fa-whatsapp"></i> Enviar pedido por WhatsApp
-      </button>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total <span id="cartTotal">$0</span></div>
+      <button class="btn btn-primary w100" onclick="checkoutCart()">Enviar pedido por WhatsApp</button>
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
+  <!-- WA FLOTANTE -->
+  <a href="https://wa.me/541156584277?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20LIMA%20LIMÓN%20🍋" class="wa-float" target="_blank">
+    <span class="wa-tooltip">¡Pedí ahora!</span>
+    💬
+  </a>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- CONFETTI CONTAINER -->
+  <div id="confettiContainer"></div>
+
   <script src="main.js"></script>
 </body>
-</html>
+</html>  
