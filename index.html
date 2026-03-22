@@ -1,92 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DELIKUSH | Premium Streetwear</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELIKUSH | Premium Streetwear</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="bg-gradient"></div>
 
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo">DELI<span>KUSH</span></div>
-      <ul class="nav-links">
-        <li><a href="#inicio">HOME</a></li>
-        <li><a href="#catalogo">CATÁLOGO</a></li>
-        <li><a href="#pedidos">PEDIDOS</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <div class="hero-badge">🔥 DROP 2026</div>
-      <h1 class="hero-title">
-        <span class="line1">VISTE</span><br>
-        <span class="line2">GRANDE</span><br>
-        <span class="line3">VIVE LIBRE</span>
-      </h1>
-      <p class="hero-sub">Oversize real para los que vibran diferente.</p>
-      <div class="hero-ctas">
-        <a href="#catalogo" class="btn btn-primary">VER DROP</a>
-        <a href="#pedidos" class="btn btn-outline">PEDIR</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <div class="brand-symbol">DK</div>
+    <main class="bento-container">
+        <div class="bento-item profile-card">
+            <div class="logo">DELI<span>KUSH</span></div>
+            <p>Viste Grande. Vive Libre.</p>
+            <div class="badge">DROP 2026 LIVE</div>
         </div>
-      </div>
-      <div class="floating-tag tag-top">👕 STREETWEAR</div>
-      <div class="floating-tag tag-bottom">🔥 KUSH</div>
-    </div>
-  </section>
 
-  <section class="coleccion" id="catalogo">
-    <h2 class="section-title">NUESTRO <span>CATÁLOGO</span></h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-img">👕</div>
-        <div class="product-info">
-          <h3>Remera Boxy Fit</h3>
-          <p class="price">$22.500</p>
-          <button class="btn-card" onclick="pedir('Remera Boxy Fit', '$22.500')">COMPRAR</button>
+        <div class="bento-item hero-visual">
+            <div class="floating-text">OVERSIZE VIBES</div>
+            <div class="dk-symbol">DK</div>
         </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img">🧥</div>
-        <div class="product-info">
-          <h3>Hoodie Heavy</h3>
-          <p class="price">$45.000</p>
-          <button class="btn-card" onclick="pedir('Hoodie Heavy', '$45.000')">COMPRAR</button>
+
+        <div class="bento-item shop-card" onclick="location.href='#productos'">
+            <h3>CATÁLOGO <i class="fas fa-arrow-right"></i></h3>
+            <p>Explora la nueva colección</p>
         </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img">👖</div>
-        <div class="product-info">
-          <h3>Pantalón Cargo</h3>
-          <p class="price">$38.900</p>
-          <button class="btn-card" onclick="pedir('Pantalón Cargo', '$38.900')">COMPRAR</button>
+
+        <div class="bento-item product-featured">
+            <span class="tag">HOT</span>
+            <div class="img-placeholder">👕</div>
+            <h4>Boxy Fit Tee</h4>
+            <p>$22.500</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <p>© 2026 DELIKUSH BRAND</p>
-  </footer>
+        <div class="bento-item social-card">
+            <a href="https://wa.me/541156584277" class="wa-btn">
+                <i class="fab fa-whatsapp"></i> PEDIR POR WHATSAPP
+            </a>
+        </div>
 
-  <a href="https://wa.me/541156584277" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+        <div class="bento-item shipping-card">
+            <i class="fas fa-truck"></i>
+            <p>Envíos a todo el país 🇦🇷</p>
+        </div>
+    </main>
 
-  <script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
