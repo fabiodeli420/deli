@@ -43,25 +43,25 @@ ul { list-style: none; }
 
 /* ── CURSOR ── */
 .cursor {
-  width: 10px; height: 10px;
+  width: 12px; height: 12px;
   background: var(--fire);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s;
-  mix-blend-mode: normal;
+  box-shadow: 0 0 8px var(--fire);
 }
 .cursor-follower {
-  width: 32px; height: 32px;
-  border: 1.5px solid rgba(255,107,53,0.5);
+  width: 36px; height: 36px;
+  border: 2px solid var(--fire);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 99998;
   transform: translate(-50%, -50%);
-  transition: all 0.12s ease;
+  transition: all 0.1s ease;
+  opacity: 0.6;
 }
 
 /* ── NAVBAR ── */
@@ -1057,4 +1057,4 @@ body > *:not(.dk-bg) { position: relative; z-index: 1; }
 .testi-emoji { font-size: 2rem; width: 44px; height: 44px; background: rgba(255,107,53,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .testi-autor strong { display: block; font-size: 0.88rem; font-weight: 700; color: var(--text); }
 .testi-autor span { font-size: 0.72rem; color: var(--muted); letter-spacing: 1px; }
-@media (max-width: 768px) { .testimonios { padding: 70px 20px; } .testi-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .testimonios { padding: 70px 20px; } .testi-grid { grid-template-columns: 1fr; } }  
