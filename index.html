@@ -3,38 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | 2026</title>
+    <title>DELIKUSH | Premium Oversize Streetwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bento-container">
-        <div class="bento-item card-logo">
+    <div class="background-glow"></div>
+
+    <main class="bento-container">
+        <div class="bento-item card-hero" data-aos="fade-up">
+            <span class="badge">COLLECCIÓN 2026</span>
             <h1 class="logo">DELI<span>KUSH</span></h1>
-            <p>VISTE GRANDE</p>
+            <p class="slogan">Oversize vibes. Premium quality.</p>
         </div>
 
         <div class="bento-item card-visual">
-            <div class="dk-symbol">DK</div>
+            <div class="dk-inner">DK</div>
+            <p class="tag-floating">ORIGINAL BRAND</p>
         </div>
 
-        <div class="bento-item card-product" onclick="pedir('Boxy Fit')">
-            <span class="emoji">👕</span>
-            <p>BOXY FIT</p>
+        <div class="bento-item card-product product-1" onclick="pedir('Remera Boxy Fit', '$22.500')">
+            <span class="badge-new">NEW</span>
+            <div class="product-icon">👕</div>
+            <h3>BOXY FIT TEE</h3>
             <p class="price">$22.500</p>
         </div>
 
-        <div class="bento-item card-product" onclick="pedir('Hoodie')">
-            <span class="emoji">🧥</span>
-            <p>HOODIE</p>
+        <div class="bento-item card-product product-2" onclick="pedir('Hoodie Heavy Cotton', '$45.000')">
+            <div class="product-icon">🧥</div>
+            <h3>HEAVY HOODIE</h3>
             <p class="price">$45.000</p>
         </div>
 
-        <div class="bento-item card-wa" onclick="window.open('https://wa.me/541156584277')">
-            <h3>WHATSAPP 🔥</h3>
-            <p>PEDIR AHORA</p>
+        <div class="bento-item card-whatsapp" onclick="window.open('https://wa.me/541156584277')">
+            <i class="fab fa-whatsapp"></i>
+            <div>
+                <h3>HACÉ TU PEDIDO</h3>
+                <p>Atención personalizada en stock y talles</p>
+            </div>
+            <i class="fas fa-arrow-right"></i>
         </div>
-    </div>
+
+        <div class="bento-item card-info">
+            <i class="fas fa-truck-fast"></i>
+            <p>Envíos a todo el país 🇦🇷</p>
+        </div>
+    </main>
 
     <script src="main.js"></script>
 </body>
