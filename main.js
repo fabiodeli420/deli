@@ -7,12 +7,12 @@ const WA = '541156584277';
 
 // ── PRODUCTOS ────────────────────────────────────────────────────
 const PRODUCTOS = [
-  { id:1, nombre:'Remera Oversize',  emoji:'👕', desc:'Fit amplio, tela premium, varios colores. El básico que no puede faltar.', precio:22500, badge:'BESTSELLER', gradiente:'linear-gradient(135deg,#ff6b35,#f7931e)' },
-  { id:2, nombre:'Buzo Hoodie',      emoji:'🧥', desc:'Capucha, bolsillo canguro, 420GSM. Super cómodo para el día a día.',      precio:45000, badge:'NUEVO',     gradiente:'linear-gradient(135deg,#a855f7,#6366f1)', badgeNew:true },
-  { id:3, nombre:'Pantalón Baggy',   emoji:'👖', desc:'Corte relajado, tela liviana y resistente. El combo perfecto.',            precio:38900, badge:'',          gradiente:'linear-gradient(135deg,#10b981,#06b6d4)' },
-  { id:4, nombre:'Jogger Oversize',  emoji:'🩳', desc:'Elástico en puños y cintura. Ideal para un look streetwear completo.',     precio:28000, badge:'FIRE',      gradiente:'linear-gradient(135deg,#f43f5e,#fb923c)' },
-  { id:5, nombre:'Set Completo',     emoji:'🎁', desc:'Buzo + Pantalón a juego. El outfit completo que todos quieren.',           precio:75000, badge:'OFERTA',    gradiente:'linear-gradient(135deg,#eab308,#f97316)' },
-  { id:6, nombre:'Trucker Cap DK',   emoji:'🧢', desc:'Parche DK bordado. Visera curva. El accesorio que corona todo look.',      precio:12000, badge:'NUEVO',     gradiente:'linear-gradient(135deg,#3b82f6,#8b5cf6)', badgeNew:true },
+  { id:1, nombre:'Remera Oversize',  emoji:'👕', desc:'Fit amplio, tela premium, varios colores. El básico que no puede faltar.', precio:22500, badge:'BESTSELLER', gradiente:'linear-gradient(135deg,#ff6b35,#f7931e)', stock:3 },
+  { id:2, nombre:'Buzo Hoodie',      emoji:'🧥', desc:'Capucha, bolsillo canguro, 420GSM. Super cómodo para el día a día.',      precio:45000, badge:'NUEVO',     gradiente:'linear-gradient(135deg,#a855f7,#6366f1)', badgeNew:true, stock:5 },
+  { id:3, nombre:'Pantalón Baggy',   emoji:'👖', desc:'Corte relajado, tela liviana y resistente. El combo perfecto.',            precio:38900, badge:'',          gradiente:'linear-gradient(135deg,#10b981,#06b6d4)', stock:8 },
+  { id:4, nombre:'Jogger Oversize',  emoji:'🩳', desc:'Elástico en puños y cintura. Ideal para un look streetwear completo.',     precio:28000, badge:'FIRE',      gradiente:'linear-gradient(135deg,#f43f5e,#fb923c)', stock:4 },
+  { id:5, nombre:'Set Completo',     emoji:'🎁', desc:'Buzo + Pantalón a juego. El outfit completo que todos quieren.',           precio:75000, badge:'OFERTA',    gradiente:'linear-gradient(135deg,#eab308,#f97316)', stock:2 },
+  { id:6, nombre:'Trucker Cap DK',   emoji:'🧢', desc:'Parche DK bordado. Visera curva. El accesorio que corona todo look.',      precio:12000, badge:'NUEVO',     gradiente:'linear-gradient(135deg,#3b82f6,#8b5cf6)', badgeNew:true, stock:10 },
 ];
 
 // ── CARRITO ───────────────────────────────────────────────────────
@@ -25,8 +25,15 @@ function formatPrecio(n) {
 function renderProductos() {
   const grid = document.getElementById('productsGrid');
   if (!grid) return;
-  grid.innerHTML = PRODUCTOS.map(p => `
-    <div class="product-card reveal">
+  grid.innerHTML = PRODUCTOS.map((p, i) => {
+    const stockBajo = p.stock && p.stock <= 3;
+    const stockBar  = p.stock ? `
+      <div class="stock-wrap">
+        <div class="stock-bar"><div class="stock-fill" style="width:${Math.min(p.stock*10,100)}%;background:${stockBajo?'#ff6b35':'#10b981'}"></div></div>
+        <span class="stock-label ${stockBajo?'stock-low':''}">${stockBajo ? `⚡ Solo ${p.stock} restantes` : `✓ Stock disponible`}</span>
+      </div>` : '';
+    return `
+    <div class="product-card reveal" style="animation-delay:${i * 0.1}s">
       <div class="product-img" style="background:${p.gradiente}">
         <span class="product-icon">${p.emoji}</span>
         ${p.badge ? `<div class="product-badge${p.badgeNew?' badge-new':''}">${p.badge}</div>` : ''}
@@ -38,12 +45,13 @@ function renderProductos() {
         <div class="product-sizes">
           <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span>
         </div>
+        ${stockBar}
         <button class="btn-card" onclick="agregarAlCarrito(${p.id})">
           <i class="fas fa-shopping-bag"></i> Agregar al carrito
         </button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
   observeReveal();
 }
 
@@ -55,6 +63,7 @@ function agregarAlCarrito(id) {
   actualizarCartUI();
   renderCartItems();
   showToast(`✅ ${prod.emoji} ${prod.nombre} agregado`, 'success');
+  lanzarConfetti();
 }
 
 function cambiarQty(id, delta) {
@@ -314,6 +323,7 @@ function animateCounters() {
 // ── INIT ──────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   renderProductos();
+  renderTestimonios();
   actualizarCartUI();
   initNavbar();
   initMobileMenu();
@@ -468,4 +478,80 @@ function initDkBackground() {
     `;
     container.appendChild(el);
   }
-} 
+}
+
+// ── CONFETTI ─────────────────────────────────────────────────────
+function lanzarConfetti() {
+  const COLORS = ['#ff6b35','#a855f7','#f7c948','#6366f1','#ffffff','#ff9d6f'];
+  const COUNT  = 60;
+
+  for (let i = 0; i < COUNT; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    const size  = Math.random() * 8 + 4;
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const left  = Math.random() * 100;
+    const delay = Math.random() * 0.5;
+    const dur   = Math.random() * 1.5 + 1;
+    const rot   = Math.random() * 720 - 360;
+    const shape = Math.random() > 0.5 ? '50%' : '2px';
+
+    el.style.cssText = `
+      position:fixed;
+      left:${left}%;
+      top:-10px;
+      width:${size}px;
+      height:${size}px;
+      background:${color};
+      border-radius:${shape};
+      z-index:9999;
+      pointer-events:none;
+      animation: confettiFall ${dur}s ease-in ${delay}s forwards;
+      transform: rotate(0deg);
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), (dur + delay + 0.1) * 1000);
+  }
+
+  // Agregar keyframe si no existe
+  if (!document.getElementById('confetti-style')) {
+    const s = document.createElement('style');
+    s.id = 'confetti-style';
+    s.textContent = `
+      @keyframes confettiFall {
+        0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+        80%  { opacity: 1; }
+        100% { transform: translateY(100vh) rotate(var(--r, 360deg)) scale(0.5); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(s);
+  }
+}
+
+// ── TESTIMONIOS ──────────────────────────────────────────────────
+const TESTIMONIOS = [
+  { nombre:'Matías G.',    ciudad:'Buenos Aires', texto:'La remera oversize es una locura, calidad increíble. Ya pedí la segunda.', stars:5, emoji:'👕' },
+  { nombre:'Vale R.',      ciudad:'Rosario',      texto:'El buzo hoodie es lo más cómodo que tuve. El envío llegó rápidísimo 🔥',    stars:5, emoji:'🧥' },
+  { nombre:'Fede T.',      ciudad:'Córdoba',      texto:'El combo DK una ganga. Los dos quedan perfectos juntos, muy buena tela.',   stars:5, emoji:'🎁' },
+  { nombre:'Caro M.',      ciudad:'Mendoza',      texto:'Atención por WhatsApp re rápida, me asesoraron con el talle. Top 💜',       stars:5, emoji:'⭐' },
+  { nombre:'Nico S.',      ciudad:'La Plata',     texto:'El pantalón baggy tiene el corte exacto que buscaba. Volvería a comprar.',  stars:5, emoji:'👖' },
+];
+
+function renderTestimonios() {
+  const sec = document.getElementById('testimonios-grid');
+  if (!sec) return;
+  sec.innerHTML = TESTIMONIOS.map((t, i) => `
+    <div class="testi-card reveal" style="animation-delay:${i*0.12}s">
+      <div class="testi-stars">${'★'.repeat(t.stars)}</div>
+      <p class="testi-texto">"${t.texto}"</p>
+      <div class="testi-autor">
+        <span class="testi-emoji">${t.emoji}</span>
+        <div>
+          <strong>${t.nombre}</strong>
+          <span>${t.ciudad}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  observeReveal();
+}
