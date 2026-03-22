@@ -1,24 +1,13 @@
-document.querySelectorAll('.bento-item').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (centerY - y) / 10;
-        const rotateY = (x - centerX) / 10;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
+console.log("DELIKUSH cargado correctamente");
 
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+function pedir(item) {
+    const msj = encodeURIComponent("Hola DELIKUSH! 🔥 Quiero consultar por: " + item);
+    window.open("https://wa.me/541156584277?text=" + msj, "_blank");
+}
+
+// Movimiento suave de las tarjetas
+document.querySelectorAll('.bento-item').forEach(item => {
+    item.addEventListener('click', () => {
+        console.log("Click en " + item.innerText);
     });
 });
-
-function pedir(item, precio) {
-    const url = `https://wa.me/541156584277?text=${encodeURIComponent('Hola DELIKUSH! 🔥 Quiero pedir: ' + item + ' (' + precio + ')')}`;
-    window.open(url, '_blank');
-}
