@@ -3,127 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | Catálogo Pastel 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>DELIKUSH | Catálogo Premium Streetwear - Pastel Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-base: #f8fafc;
-            --p-pink: #fdf2f8;
-            --p-blue: #e0f2fe;
-            --p-orange: #ffedd5;
-            --glass: rgba(255, 255, 255, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.7);
-            --accent: #f97316;
-            --text: #1e293b;
+            /* NUEVA PALETA DE COLORES PASTEL */
+            --bg-pastel: #fdf2f8; /* Rosa bebé muy suave de base */
+            --pastel-orange: #ffedd5; /* Naranja pastel suave */
+            --pastel-purple: #ede9fe; /* Violeta/Lavanda pastel suave */
+            --pastel-blue: #e0f2fe; /* Azul cielo pastel suave */
+            --text-dark: #1f2937; /* Gris muy oscuro para legibilidad */
+            --card-white: #ffffff; /* Tarjetas blancas puras */
+            --card-border: rgba(0, 0, 0, 0.05); /* Borde muy sutil */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-base);
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
+        
+        body { 
+            background-color: var(--bg-pastel); 
+            color: var(--text-dark); 
+            font-family: 'Montserrat', sans-serif; 
+            display: flex; 
+            justify-content: center; 
             align-items: center;
-            overflow-x: hidden;
+            min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- FONDO ANIMADO PASTEL --- */
-        .bg-wrapper {
+        /* --- NUEVO FONDO "MESH PASTEL" (PROFUNDIDAD SUAVE) --- */
+        .background-scene {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, var(--p-pink), var(--p-blue));
+            z-index: -10;
+            background: var(--bg-pastel);
+            background-image: 
+                radial-gradient(at 10% 10%, var(--pastel-orange) 0px, transparent 40%),
+                radial-gradient(at 90% 10%, var(--pastel-purple) 0px, transparent 40%),
+                radial-gradient(at 50% 50%, var(--pastel-blue) 0px, transparent 50%),
+                radial-gradient(at 10% 90%, var(--pastel-purple) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, var(--pastel-orange) 0px, transparent 40%);
+            animation: mesh-glow 20s infinite alternate ease-in-out;
         }
 
-        .blob {
-            position: absolute;
-            width: 50vw; height: 50vw;
-            filter: blur(80px);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: move 18s infinite alternate ease-in-out;
+        @keyframes mesh-glow {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
-        .blob-1 { background: var(--p-orange); top: -10%; left: -10%; }
-        .blob-2 { background: var(--p-pink); bottom: -10%; right: -10%; animation-delay: -4s; }
-        .blob-3 { background: var(--p-blue); top: 30%; left: 20%; animation-delay: -8s; }
-
-        @keyframes move {
-            from { transform: translate(0,0) scale(1); }
-            to { transform: translate(100px, 80px) scale(1.15); }
-        }
-
-        /* --- GRILLA BENTO --- */
+        /* --- CONTENEDOR BENTO (EXTENDIDO - 6 PRODUCTOS) --- */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 160px;
-            gap: 15px;
+            grid-auto-rows: minmax(160px, auto);
+            gap: 20px;
             max-width: 1100px;
             width: 100%;
             z-index: 10;
         }
 
-        /* --- TARJETAS GLASSMORPHISM --- */
+        /* --- ESTILO DE TARJETAS (LIMPIAS Y BLANCAS) --- */
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
+            background: var(--card-white);
+            border: 1px solid var(--card-border);
             border-radius: 30px;
-            padding: 25px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            overflow: hidden;
+            position: relative;
+            /* Sombra suave para volumen */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
         }
 
+        /* Hover dinámico limpio */
         .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.65);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transform: translateY(-8px) rotateX(2deg) rotateY(1deg);
+            border-color: rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
         }
 
-        /* Tamaños */
+        /* TAMAÑOS BENTO */
         .card-large { grid-column: span 2; grid-row: span 2; }
         .card-tall { grid-column: span 1; grid-row: span 2; }
         .card-wide { grid-column: span 2; grid-row: span 1; }
         .card-standard { grid-column: span 1; grid-row: span 2; }
 
-        /* Contenido */
-        .logo-text { font-family: 'Bebas Neue'; font-size: 5.5rem; line-height: 0.85; }
-        .logo-text span { color: var(--accent); }
-        .slogan { font-size: 0.75rem; font-weight: 800; letter-spacing: 5px; opacity: 0.6; margin-top: 10px; }
+        /* DISEÑO INTERNO */
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 5.5rem; line-height: 0.9; letter-spacing: 2px; color: var(--text-dark); }
+        .logo-text span { color: #f97316; /* Naranja más fuerte para el logo pero que combine */ }
+        .slogan { font-size: 0.8rem; font-weight: 600; opacity: 0.7; letter-spacing: 5px; margin-top: 15px; color: var(--text-dark); }
 
-        .emoji { font-size: 5rem; text-align: center; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); }
-        .emoji-large { font-size: 7rem; }
+        /* Estilos de Producto */
+        .product-visual { font-size: 6rem; text-align: center; margin-bottom: 20px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); }
+        
+        .product-info { text-align: left; }
+        .product-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; line-height: 1.1; margin-bottom: 5px; color: var(--text-dark); }
+        .product-desc { font-size: 0.85rem; opacity: 0.7; margin-bottom: 15px; color: var(--text-dark); }
+        .product-price { font-weight: 800; color: #f97316; font-size: 1.8rem; }
 
-        .product-title { font-family: 'Bebas Neue'; font-size: 2rem; margin-top: 10px; }
-        .price { font-weight: 900; color: var(--accent); font-size: 1.6rem; }
+        /* Botón WhatsApp Pastel */
+        .whatsapp-card { background: #d1fae5; /* Verde menta pastel suave */ color: #065f46; /* Gris menta oscuro */ border: none; flex-direction: row; gap: 15px; align-items: center; justify-content: center; border-radius: 50px; }
+        .whatsapp-card i { font-size: 2.2rem; }
+        .whatsapp-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin: 0; }
 
-        .wa-btn { background: #25d366; color: white; border: none; align-items: center; justify-content: center; }
-        .wa-btn h3 { font-family: 'Bebas Neue'; font-size: 2.2rem; }
+        /* Info Card Pastel */
+        .card-info { text-align: center; justify-content: center; background-color: var(--pastel-blue); border: none; }
+        .card-info h4 { font-size: 0.75rem; opacity: 0.6; margin-bottom: 5px; color: var(--text-dark); }
+        .card-info p { font-weight: 800; font-size: 1.1rem; color: var(--text-dark); }
 
-        /* Mobile */
+        /* RESPONSIVE MÓVIL (Fija) */
         @media (max-width: 800px) {
             .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-            .card-large, .card-tall, .card-wide, .card-standard { grid-column: span 2; height: 220px; }
+            .card-large, .card-tall, .card-standard, .card-wide { grid-column: span 2; height: auto; }
+            .card-info { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-wrapper">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
+    <div class="background-scene"></div>
 
     <div class="bento-grid">
         <div class="card card-large">
@@ -131,73 +134,93 @@
             <p class="slogan">BUENOS AIRES • 2026</p>
         </div>
 
-        <div class="card card-standard" onclick="pedir('Boxy Fit Tee', '$22.500')">
-            <div class="emoji">👕</div>
-            <div>
-                <h3 class="product-title">BOXY FIT</h3>
-                <p class="price">$22.500</p>
+        <div class="card card-standard product-1" onclick="pedir('Boxy Fit Tee - Off White', '$22.500')">
+            <div class="product-visual">👕</div>
+            <div class="product-info">
+                <h3 class="product-title">BOXY FIT TEE</h3>
+                <p class="product-desc">Algodón 100% Premium. Off-White. Cuello ancho.</p>
+                <p class="product-price">$22.500</p>
             </div>
         </div>
 
-        <div class="card card-tall" onclick="pedir('Heavy Hoodie', '$45.000')">
-            <div class="emoji emoji-large">🧥</div>
-            <div>
+        <div class="card card-tall product-2" onclick="pedir('Heavy Hoodie - Black', '$45.000')">
+            <div class="product-visual" style="font-size: 8rem;">🧥</div>
+            <div class="product-info">
                 <h3 class="product-title">HEAVY HOODIE</h3>
-                <p class="price">$45.000</p>
+                <p class="product-desc">420 GSM. Frisa invisible. Capucha reforzada.</p>
+                <p class="product-price">$45.000</p>
             </div>
         </div>
 
-        <div class="card card-wide wa-btn" onclick="window.open('https://wa.me/541156584277')">
-            <h3>PEDIR POR WHATSAPP 🔥</h3>
+        <div class="card card-wide whatsapp-card" onclick="window.open('https://wa.me/541156584277')">
+            <h3>PEDIR POR WHATSAPP</h3>
         </div>
 
-        <div class="card card-standard" onclick="pedir('Baggy Cargo', '$38.900')">
-            <div class="emoji">👖</div>
-            <div>
+        <div class="card card-standard product-3" onclick="pedir('Pantalón Baggy Cargo', '$38.900')">
+            <div class="product-visual">👖</div>
+            <div class="product-info">
                 <h3 class="product-title">BAGGY CARGO</h3>
-                <p class="price">$38.900</p>
+                <p class="product-desc">Corte ultra relajado. 6 bolsillos.</p>
+                <p class="product-price">$38.900</p>
             </div>
         </div>
 
-        <div class="card card-standard" onclick="pedir('Short Oversize', '$18.500')">
-            <div class="emoji">🩳</div>
-            <div>
+        <div class="card card-standard product-4" onclick="pedir('Short Oversize - Gray', '$18.500')">
+            <div class="product-visual">🩳</div>
+            <div class="product-info">
                 <h3 class="product-title">OVERSHORT</h3>
-                <p class="price">$18.500</p>
+                <p class="product-desc">Frisa liviana. Ideal daily wear.</p>
+                <p class="product-price">$18.500</p>
             </div>
         </div>
 
-        <div class="card card-standard" onclick="pedir('Trucker Cap', '$12.000')">
-            <div class="emoji">🧢</div>
-            <div>
+        <div class="card card-standard product-5" onclick="pedir('Gorra Trucker - DK', '$12.000')">
+            <div class="product-visual">🧢</div>
+            <div class="product-info">
                 <h3 class="product-title">TRUCKER CAP</h3>
-                <p class="price">$12.000</p>
+                <p class="product-desc">Parche DK bordado. Visera curva.</p>
+                <p class="product-price">$12.000</p>
             </div>
         </div>
+
+        <div class="card card-large product-6 dk-glow" onclick="pedir('Combo Hoodie + Baggy', '$75.000')" style="background-color: var(--pastel-purple); border: none; justify-content: center; align-items: center;">
+            <div class="product-visual" style="font-size: 8rem; position: absolute; opacity: 0.1; top: 0; left: 0;">🧥👖🧢</div>
+            <div class="product-info" style="text-align: center;">
+                <h3 class="product-title" style="font-size: 3.5rem;">COMBO DK</h3>
+                <p class="product-desc" style="font-size: 1rem; opacity: 0.8;">Hoodie + Baggy Cargo a elección.</p>
+                <p class="product-price" style="font-size: 2.5rem;">$75.000</p>
+            </div>
+        </div>
+
+        <div class="card card-info">
+            <h4>ENVÍOS</h4>
+            <p>TODO EL PAÍS 🇦🇷</p>
+        </div>
+
     </div>
 
     <script>
         function pedir(producto, precio) {
             const tel = "541156584277";
-            const texto = encodeURIComponent(`Hola DELIKUSH! 🔥 Quiero info de: ${producto} que sale ${precio}`);
-            window.open(`https://wa.me/${tel}?text=${texto}`, '_blank');
+            const msj = encodeURIComponent(`¡Hola DELIKUSH! Quiero info de: ${producto} que sale ${precio}.`);
+            window.open(`https://wa.me/${tel}?text=${msj}`, '_blank');
         }
 
-        // Efecto 3D sutil
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
+        // Efecto Tilt 3D (Limpio y sutil)
+        document.querySelectorAll('.card').forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotX = (centerY - y) / 20;
-                const rotY = (x - centerX) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
+                const rotateX = (centerY - y) / 15; // Más sutil
+                const rotateY = (x - centerX) / 15; // Más sutil
+                item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
             });
 
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
             });
         });
     </script>
