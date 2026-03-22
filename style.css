@@ -1,76 +1,57 @@
-:root {
-    --black: #050505;
-    --orange: #ff6b35;
-    --glass: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.1);
-}
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
-    background: var(--black); 
+    background-color: #050505; 
     color: white; 
     font-family: 'Inter', sans-serif; 
-    overflow-x: hidden; 
+    display: flex; 
+    justify-content: center; 
+    padding: 20px;
 }
 
-.bg-glow {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #151515 0%, #000 100%);
-    z-index: -1;
-}
-
-.bento-wrapper { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-.header-main { text-align: center; margin-bottom: 30px; }
-.logo { font-family: 'Bebas Neue'; font-size: 4rem; letter-spacing: 2px; }
-.logo span { color: var(--orange); }
-
-/* GRID SISTEMA */
-.grid-layout {
+.bento-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 180px;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+    max-width: 500px;
+    width: 100%;
 }
 
-.card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    border-radius: 25px;
-    padding: 25px;
-    transition: 0.3s ease;
-    position: relative;
-    overflow: hidden;
+.bento-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+    text-align: center;
 }
 
-.card:hover { border-color: var(--orange); }
+/* EFECTO MOVIMIENTO AL PASAR EL MOUSE */
+.bento-item:hover {
+    border-color: #ff6b35;
+    background: rgba(255, 107, 53, 0.05);
+    transform: scale(1.02);
+}
 
-/* Tamaños de las cajas */
-.card-big { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
-.card-big h2 { font-family: 'Bebas Neue'; font-size: 5rem; line-height: 0.8; margin-top: 10px; }
-.card-big span { color: var(--orange); }
+.card-logo { grid-column: span 2; height: 150px; }
+.logo { font-family: 'Bebas Neue'; font-size: 3.5rem; }
+.logo span { color: #ff6b35; }
 
-.card-visual { grid-column: span 2; grid-row: span 2; background: linear-gradient(135deg, var(--orange), #a855f7); display: grid; place-items: center; }
-.dk-float { font-family: 'Bebas Neue'; font-size: 10rem; opacity: 0.3; animation: float 3s ease-in-out infinite; }
+.card-visual { grid-column: span 2; height: 200px; background: linear-gradient(45deg, #ff6b35, #a855f7); }
+.dk-symbol { font-family: 'Bebas Neue'; font-size: 6rem; opacity: 0.3; animation: bounce 3s infinite; }
 
-.card-item { grid-column: span 1; grid-row: span 2; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
-.icon { font-size: 5rem; }
-.price { color: var(--orange); font-weight: 900; font-size: 1.5rem; }
+.card-product { height: 180px; }
+.emoji { font-size: 3rem; }
+.price { font-weight: 900; color: #ff6b35; margin-top: 10px; }
 
-.card-wide { grid-column: span 4; display: flex; align-items: center; gap: 20px; cursor: pointer; }
-.card-wide i { font-size: 3rem; color: #25d366; }
+.card-wa { grid-column: span 2; height: 80px; background: #25d366; color: white; }
 
-.btn-wa { background: white; border: none; padding: 12px; border-radius: 12px; font-weight: 900; cursor: pointer; width: 100%; }
-
-@keyframes float {
+@keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .grid-layout { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
-    .card-big, .card-visual, .card-wide, .card-item { grid-column: span 2; }
+    50% { transform: translateY(-10px); }
 }
