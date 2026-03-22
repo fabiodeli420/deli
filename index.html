@@ -3,16 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DELIKUSH | Catálogo Pastel</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DELIKUSH | Catálogo Pastel 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #f8fafc;
+            --p-pink: #fdf2f8;
+            --p-blue: #e0f2fe;
+            --p-orange: #ffedd5;
+            --glass: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --accent: #f97316;
+            --text: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-base);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* --- FONDO ANIMADO PASTEL --- */
+        .bg-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--p-pink), var(--p-blue));
+        }
+
+        .blob {
+            position: absolute;
+            width: 50vw; height: 50vw;
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: move 18s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { background: var(--p-orange); top: -10%; left: -10%; }
+        .blob-2 { background: var(--p-pink); bottom: -10%; right: -10%; animation-delay: -4s; }
+        .blob-3 { background: var(--p-blue); top: 30%; left: 20%; animation-delay: -8s; }
+
+        @keyframes move {
+            from { transform: translate(0,0) scale(1); }
+            to { transform: translate(100px, 80px) scale(1.15); }
+        }
+
+        /* --- GRILLA BENTO --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 160px;
+            gap: 15px;
+            max-width: 1100px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* --- TARJETAS GLASSMORPHISM --- */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        /* Tamaños */
+        .card-large { grid-column: span 2; grid-row: span 2; }
+        .card-tall { grid-column: span 1; grid-row: span 2; }
+        .card-wide { grid-column: span 2; grid-row: span 1; }
+        .card-standard { grid-column: span 1; grid-row: span 2; }
+
+        /* Contenido */
+        .logo-text { font-family: 'Bebas Neue'; font-size: 5.5rem; line-height: 0.85; }
+        .logo-text span { color: var(--accent); }
+        .slogan { font-size: 0.75rem; font-weight: 800; letter-spacing: 5px; opacity: 0.6; margin-top: 10px; }
+
+        .emoji { font-size: 5rem; text-align: center; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); }
+        .emoji-large { font-size: 7rem; }
+
+        .product-title { font-family: 'Bebas Neue'; font-size: 2rem; margin-top: 10px; }
+        .price { font-weight: 900; color: var(--accent); font-size: 1.6rem; }
+
+        .wa-btn { background: #25d366; color: white; border: none; align-items: center; justify-content: center; }
+        .wa-btn h3 { font-family: 'Bebas Neue'; font-size: 2.2rem; }
+
+        /* Mobile */
+        @media (max-width: 800px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; }
+            .card-large, .card-tall, .card-wide, .card-standard { grid-column: span 2; height: 220px; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="bg-container">
-        <div class="blob orange"></div>
-        <div class="blob purple"></div>
-        <div class="blob blue"></div>
+    <div class="bg-wrapper">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
 
     <div class="bento-grid">
@@ -21,41 +131,75 @@
             <p class="slogan">BUENOS AIRES • 2026</p>
         </div>
 
-        <div class="card card-standard" onclick="pedir('Boxy Fit', '$22.500')">
-            <div class="visual">👕</div>
-            <h3>BOXY FIT</h3>
-            <p class="price">$22.500</p>
+        <div class="card card-standard" onclick="pedir('Boxy Fit Tee', '$22.500')">
+            <div class="emoji">👕</div>
+            <div>
+                <h3 class="product-title">BOXY FIT</h3>
+                <p class="price">$22.500</p>
+            </div>
         </div>
 
         <div class="card card-tall" onclick="pedir('Heavy Hoodie', '$45.000')">
-            <div class="visual" style="font-size: 8rem;">🧥</div>
-            <h3>HEAVY HOODIE</h3>
-            <p class="price">$45.000</p>
+            <div class="emoji emoji-large">🧥</div>
+            <div>
+                <h3 class="product-title">HEAVY HOODIE</h3>
+                <p class="price">$45.000</p>
+            </div>
         </div>
 
-        <div class="card card-wide whatsapp" onclick="window.open('https://wa.me/541156584277')">
+        <div class="card card-wide wa-btn" onclick="window.open('https://wa.me/541156584277')">
             <h3>PEDIR POR WHATSAPP 🔥</h3>
         </div>
 
         <div class="card card-standard" onclick="pedir('Baggy Cargo', '$38.900')">
-            <div class="visual">👖</div>
-            <h3>BAGGY CARGO</h3>
-            <p class="price">$38.900</p>
+            <div class="emoji">👖</div>
+            <div>
+                <h3 class="product-title">BAGGY CARGO</h3>
+                <p class="price">$38.900</p>
+            </div>
         </div>
 
         <div class="card card-standard" onclick="pedir('Short Oversize', '$18.500')">
-            <div class="visual">🩳</div>
-            <h3>OVERSHORT</h3>
-            <p class="price">$18.500</p>
+            <div class="emoji">🩳</div>
+            <div>
+                <h3 class="product-title">OVERSHORT</h3>
+                <p class="price">$18.500</p>
+            </div>
         </div>
 
         <div class="card card-standard" onclick="pedir('Trucker Cap', '$12.000')">
-            <div class="visual">🧢</div>
-            <h3>TRUCKER CAP</h3>
-            <p class="price">$12.000</p>
+            <div class="emoji">🧢</div>
+            <div>
+                <h3 class="product-title">TRUCKER CAP</h3>
+                <p class="price">$12.000</p>
+            </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function pedir(producto, precio) {
+            const tel = "541156584277";
+            const texto = encodeURIComponent(`Hola DELIKUSH! 🔥 Quiero info de: ${producto} que sale ${precio}`);
+            window.open(`https://wa.me/${tel}?text=${texto}`, '_blank');
+        }
+
+        // Efecto 3D sutil
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotX = (centerY - y) / 20;
+                const rotY = (x - centerX) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-8px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+            });
+        });
+    </script>
 </body>
 </html>
