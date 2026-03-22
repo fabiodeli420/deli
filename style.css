@@ -1030,7 +1030,7 @@ ul { list-style: none; }
   filter: blur(0.3px);
 }
 
-@keyframes dkFloat {
+@keyframes dkPulse {
   0%   { transform: translateY(0px) rotate(var(--rot)) scale(1); opacity: var(--op); }
   33%  { transform: translateY(-18px) rotate(calc(var(--rot) + 4deg)) scale(1.04); }
   66%  { transform: translateY(10px) rotate(calc(var(--rot) - 3deg)) scale(0.97); }
