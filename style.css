@@ -1,14 +1,22 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* RESET GENERAL */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
-body { 
-    background-color: #050505; 
-    color: white; 
-    font-family: 'Inter', sans-serif; 
-    display: flex; 
-    justify-content: center; 
+body {
+    background-color: #050505;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
 }
 
+/* CONTENEDOR BENTO */
 .bento-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -17,41 +25,99 @@ body {
     width: 100%;
 }
 
+/* EFECTO VIDRIO (GLASSMORPISM) */
 .bento-item {
     background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: 24px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     text-align: center;
 }
 
-/* EFECTO MOVIMIENTO AL PASAR EL MOUSE */
+/* INTERACCIÓN */
 .bento-item:hover {
     border-color: #ff6b35;
-    background: rgba(255, 107, 53, 0.05);
-    transform: scale(1.02);
+    background: rgba(255, 107, 53, 0.08);
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.card-logo { grid-column: span 2; height: 150px; }
-.logo { font-family: 'Bebas Neue'; font-size: 3.5rem; }
-.logo span { color: #ff6b35; }
+/* CABECERA / LOGO */
+.card-logo { 
+    grid-column: span 2; 
+    height: 140px; 
+}
+.logo { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 3.8rem; 
+    letter-spacing: 2px;
+}
+.logo span { 
+    color: #ff6b35; 
+}
 
-.card-visual { grid-column: span 2; height: 200px; background: linear-gradient(45deg, #ff6b35, #a855f7); }
-.dk-symbol { font-family: 'Bebas Neue'; font-size: 6rem; opacity: 0.3; animation: bounce 3s infinite; }
+/* BLOQUE VISUAL (GRADIENTE) */
+.card-visual { 
+    grid-column: span 2; 
+    height: 220px; 
+    background: linear-gradient(45deg, #ff6b35, #a855f7); 
+    border: none;
+}
+.dk-symbol { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 7rem; 
+    opacity: 0.3; 
+    animation: bounce 3s infinite ease-in-out; 
+}
 
-.card-product { height: 180px; }
-.emoji { font-size: 3rem; }
-.price { font-weight: 900; color: #ff6b35; margin-top: 10px; }
+/* PRODUCTOS */
+.card-product { 
+    height: 200px; 
+}
+.emoji { 
+    font-size: 3.5rem; 
+    margin-bottom: 10px;
+}
+.price { 
+    font-weight: 900; 
+    color: #ff6b35; 
+    font-size: 1.4rem;
+    margin-top: 8px;
+}
 
-.card-wa { grid-column: span 2; height: 80px; background: #25d366; color: white; }
+/* BOTÓN WHATSAPP */
+.card-wa { 
+    grid-column: span 2; 
+    height: 90px; 
+    background: #25d366; 
+    color: #fff; 
+    border: none;
+}
+.card-wa h3 {
+    font-weight: 900;
+    letter-spacing: 1px;
+}
 
+/* ANIMACIÓN */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* RESPONSIVE PARA CELULARES CHICOS */
+@media (max-width: 400px) {
+    .bento-container {
+        grid-template-columns: 1fr;
+    }
+    .card-logo, .card-visual, .card-product, .card-wa {
+        grid-column: span 1;
+    }
 }
